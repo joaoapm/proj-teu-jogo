@@ -1,0 +1,33 @@
+sourceCompatibility = 1.7
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+
+
+eclipse.project.name = appName + "-carregador"
+project.ext.mainClassName = "br.com.teujogo.Carregador"
+project.ext.assetsDir = new File("../core/assets")
+
+task dist(type: Jar) {
+ 
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    into '/'
+    manifest {
+        attributes 'Main-Class': project.mainClassName
+    }
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    with jar
+ 
+}
+
+
+
+task copyJar(type: Copy) {
+  from dist
+  into '../core/assets/' 
+}
+
+dist.finalizedBy copyJar  
+dist.dependsOn classes

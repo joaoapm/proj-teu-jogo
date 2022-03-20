@@ -1,0 +1,48 @@
+plugins {
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+javafx {
+    version = '11'
+    modules = [
+            'javafx.base',
+            'javafx.controls',
+            'javafx.fxml',
+            'javafx.graphics',
+            'javafx.swing'
+    ]
+}
+
+project.ext.mainClassName = "testes.Main"
+eclipse.project.name = appName + "-desktop"
+project.ext.assetsDir = new File("../core/assets")
+sourceSets.main.resources.srcDirs = ["../core/assets"]
+
+repositories {
+    jcenter()
+}
+
+
+task dist(type: Jar) {
+  	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    into '/'
+    manifest {
+        attributes 'Main-Class': project.mainClassName
+    }
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    with jar 
+ 
+     
+}
+
+task finalize {
+    doLast {
+      delete "../core/assets/carregador-1.0.jar"
+    }
+}
+
+dist.finalizedBy(finalize) 
+dist.dependsOn classes
