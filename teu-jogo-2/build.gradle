@@ -43,6 +43,8 @@ project(":desktop") {
     
 	dependencies {
 	
+		implementation project(":carregador")
+		
 	    // jmonkeyengine dependencies
 	    implementation "org.jmonkeyengine:jme3-core:3.3.2-stable"
 	    implementation "org.jmonkeyengine:jme3-desktop:3.3.2-stable"
@@ -78,6 +80,7 @@ project(":carregador") {
     
 	dependencies {
 	
+		
 		implementation project(":core")
 		implementation "org.json:json:20090211" 
     		
