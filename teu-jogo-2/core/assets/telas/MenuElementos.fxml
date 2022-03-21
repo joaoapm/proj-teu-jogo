@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox prefHeight="197.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.teujogo.controller.JfxMenuElementosController">
+   <children>
+	 <Pane fx:id="pnlElementos" layoutX="10.0" layoutY="530.0" prefHeight="200.0" prefWidth="809.0" style="-fx-background-color: #3e62ab;"> 
+	 </Pane>
+     </children>
+</HBox>

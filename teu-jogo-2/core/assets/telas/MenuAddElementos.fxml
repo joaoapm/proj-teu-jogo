@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox prefHeight="197.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.teujogo.controller.JfxMenuElementosController">
+   <children>
+	<Label fx:id="ele" prefHeight="190.0" prefWidth="121.0" style="-fx-background-color: #7022a8;" text="Adicionar Tempo" textAlignment="CENTER" textFill="#f8eaea" wrapText="true">
+		<font>
+			<Font size="16.0" />
+          </font>
+         <HBox.margin>
+			<Insets left="10.0" />
+         </HBox.margin>
+       </Label>
+      <Label fx:id="ele1" layoutX="20.0" layoutY="10.0" prefHeight="190.0" prefWidth="121.0" style="-fx-background-color: #7022a8;" text="Adicionar Açao" textAlignment="CENTER" textFill="#f8eaea" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </Label>
+     </children>
+</HBox>
