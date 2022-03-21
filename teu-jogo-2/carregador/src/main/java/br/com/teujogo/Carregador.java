@@ -60,13 +60,12 @@ public class Carregador extends SimpleApplication {
 	public void inicia(SimpleApplication simpleApplication) {
 
 		cam =  simpleApplication.getCamera().clone();
-		cam.setViewPort(0.250f, 1f, 0.250f, 1f);
+		//cam.setViewPort(0.250f, 1f, 0.250f, 1f);
 		cam.setLocation(camIni);
 
 		simpleApplication.getRenderManager().getMainView("Default").setEnabled(false);
 
 	}
-
 
 	public void iniciaViewPort(SimpleApplication simpleApplication) {
 		view2 = simpleApplication.getRenderManager().createMainView("Bottom Left", cam);

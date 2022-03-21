@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<HBox fx:id="pnlEsq" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1084.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="pnlPrincipal" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="250.0" style="-fx-background-color: #fcba03;">
+         <children>
+            <Label text="Nome do Projeto">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="txtNomeProjeto" prefHeight="25.0" prefWidth="175.0">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" />
+               </VBox.margin>
+            </TextField>
+            <FlowPane fx:id="pnlBotoes" alignment="CENTER" prefHeight="473.0" prefWidth="248.0">
+               <children>
+                  <Button fx:id="btnNovoJogo" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Novo Jogo">
+                     <FlowPane.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </FlowPane.margin>
+                  </Button>
+                  <Button fx:id="btnSalvarJogo" layoutX="82.0" layoutY="184.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Salvar Jogo">
+                     <FlowPane.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </FlowPane.margin>
+                  </Button>
+                  <Button fx:id="btnCarregarJogo" layoutX="137.0" layoutY="184.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Carregar Jogo">
+                     <FlowPane.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </FlowPane.margin>
+                  </Button>
+                  <Button fx:id="btnExportarJogo" layoutX="82.0" layoutY="250.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Exportar Jogo">
+                     <FlowPane.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </FlowPane.margin>
+                  </Button>
+                  <Button fx:id="btnAddPersonagem" layoutX="134.0" layoutY="250.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Adicionar Personagem" textAlignment="CENTER" wrapText="true">
+                     <FlowPane.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </FlowPane.margin>
+                  </Button>
+                  <Button fx:id="btnAddElemento" layoutX="82.0" layoutY="313.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Adicionar Elemento" textAlignment="CENTER" wrapText="true">
+                     <FlowPane.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </FlowPane.margin>
+                  </Button>
+                  <Button fx:id="btnMontarFase" layoutX="134.0" layoutY="313.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Montar Fase" textAlignment="CENTER" wrapText="true">
+                     <FlowPane.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </FlowPane.margin>
+                  </Button>
+                  <Button fx:id="btnInfTela" layoutX="82.0" layoutY="394.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Informações de Tela" textAlignment="CENTER" wrapText="true">
+                     <FlowPane.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </FlowPane.margin>
+                  </Button>
+               </children>
+            </FlowPane>
+         </children>
+      </VBox>
+      <VBox alignment="BOTTOM_RIGHT" prefHeight="720.0" prefWidth="839.0">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="809.0" style="-fx-background-color: #3e62ab;" />
+         </children>
+      </VBox>
+   </children>
+</HBox>

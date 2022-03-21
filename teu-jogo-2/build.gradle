@@ -60,7 +60,7 @@ project(":core") {
     apply plugin: "java-library"
     
 	dependencies {
-	
+ 
 		implementation "org.json:json:20090211" 
 		implementation 'org.apache.directory.studio:org.apache.commons.io:2.4'
 			
