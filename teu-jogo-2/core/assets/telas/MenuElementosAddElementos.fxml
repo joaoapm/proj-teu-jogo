@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox prefHeight="197.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.teujogo.controller.JfxMenuElementosController">
+<HBox prefHeight="197.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.teujogo.controller.MenuElementosController">
    <children>
 	<Label fx:id="ele" prefHeight="190.0" prefWidth="121.0" style="-fx-background-color: #7022a8;" text="Adicionar Tempo" textAlignment="CENTER" textFill="#f8eaea" wrapText="true">
 		<font>

@@ -7,15 +7,15 @@ import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
-public class JfxPrincipalController {
+public class PrincipalController {
 
 	@FXML
 	public StackPane pnlJme;
 
 	@FXML
-	private JfxMenuElementosController menuElementosController;
+	private MenuElementosController menuElementosController;
 
-	public JfxPrincipalController() {
+	public PrincipalController() {
 		super();
 	}
 
@@ -28,13 +28,13 @@ public class JfxPrincipalController {
 	@FXML
 	private void addPersonagem(MouseEvent event) {
 		event.consume();
-		menuElementosController.showMenu(JfxMenuElementosController.MENU_PERSONAGENS);
+		menuElementosController.showMenu(MenuElementosController.MENU_PERSONAGENS);
 	}
 
 	@FXML
 	private void addElemento(MouseEvent event) {
 		event.consume();
-		menuElementosController.showMenu(JfxMenuElementosController.MENU_ELEMENTOS);
+		menuElementosController.showMenu(MenuElementosController.MENU_ELEMENTOS);
 	}
 
 }

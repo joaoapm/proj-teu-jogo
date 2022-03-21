@@ -4,18 +4,19 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-public class JfxMenuElementosController {
+public class MenuElementosController {
 
-	public static final String MENU_PERSONAGENS = "telas/MenuAddPersonagens.fxml";
-	public static final String MENU_ELEMENTOS = "telas/MenuAddElementos.fxml";
+	public static final String MENU_PERSONAGENS = "telas/MenuElementosAddPersonagens.fxml";
+	public static final String MENU_ELEMENTOS = "telas/MenuElementosAddElementos.fxml";
 
 	@FXML
 	public Pane pnlElementos;
 
-	public JfxMenuElementosController() {
+	public MenuElementosController() {
 		super();
 	}
 
@@ -28,6 +29,12 @@ public class JfxMenuElementosController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	private void teste(MouseEvent event) {
+		event.consume();
+		System.out.println(9);
 	}
 
 }

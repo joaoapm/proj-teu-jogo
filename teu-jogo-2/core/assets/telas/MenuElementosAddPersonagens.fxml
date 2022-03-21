@@ -5,10 +5,17 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import br.com.teujogo.componentes.*?>
 
 <HBox prefHeight="197.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.teujogo.controller.MenuElementosController">
-   <children>
-	 <Pane fx:id="pnlElementos" layoutX="10.0" layoutY="530.0" prefHeight="200.0" prefWidth="809.0" style="-fx-background-color: #3e62ab;"> 
-	 </Pane>
-     </children>
+    <DragCard  label="Adicionar personagem" onLargar="#teste"  >
+	  <HBox.margin>
+         <Insets top="5.0" left="5.0" right="5.0" />
+      </HBox.margin>
+	 </DragCard>
+	  <DragCard  label="Adicionar personagem" onLargar="#teste"  >
+	  <HBox.margin>
+         <Insets top="5.0" left="5.0" right="5.0" />
+      </HBox.margin>
+	 </DragCard> 
 </HBox>
