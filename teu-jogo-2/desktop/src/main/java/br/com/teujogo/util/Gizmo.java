@@ -130,15 +130,15 @@ public class Gizmo {
 
 	public void moveGizmo(JmePrincipal jme, Geometry geometry, Vector2f mouseCoords) {
 		
+		
 		if (this.geoGiz == null)
 			this.geoGiz = geometry;
 		
 		if (ptIni == null) {
 			ptInicioEle = new Vector3f(geoGiz.getLocalTranslation().x, geoGiz.getLocalTranslation().y,geoGiz.getLocalTranslation().z);
-			ptIni = new Vector2f(mouseCoords.x, mouseCoords.y);
-			ptAtual = new Vector2f(mouseCoords.x,720- mouseCoords.y);
+			ptIni = new Vector2f(mouseCoords.x,   mouseCoords.y);
+			ptAtual = new Vector2f(mouseCoords.x,  720- mouseCoords.y);
 		}
-
 		Vector2f rel = ptAtual.subtractLocal(mouseCoords);
 		ptAtual = new Vector2f(mouseCoords.x, mouseCoords.y);
 

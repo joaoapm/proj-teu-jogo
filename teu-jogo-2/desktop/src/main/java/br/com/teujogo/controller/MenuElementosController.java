@@ -45,7 +45,8 @@ public class MenuElementosController {
 	
 	@FXML
 	public void edtPersonagem(Elemento elemento) {
-		showMenu(MENU_EDT_PERSONAGEM);
+		if (elemento != null)
+			showMenu(MENU_EDT_PERSONAGEM);
 	}
 	
 }

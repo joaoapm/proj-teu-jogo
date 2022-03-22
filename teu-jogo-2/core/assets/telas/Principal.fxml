@@ -32,7 +32,7 @@
                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                      </FlowPane.margin>
                   </Button>
-                  <Button fx:id="btnSalvarJogo" layoutX="82.0" layoutY="184.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Salvar Jogo">
+                  <Button fx:id="btnSalvarJogo"  onMouseReleased="#salvar"  layoutX="82.0" layoutY="184.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Salvar Jogo">
                      <FlowPane.margin>
                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                      </FlowPane.margin>
@@ -42,7 +42,7 @@
                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                      </FlowPane.margin>
                   </Button>
-                  <Button fx:id="btnExportarJogo" layoutX="82.0" layoutY="250.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Exportar Jogo">
+                  <Button fx:id="btnExportarJogo" onMouseReleased="#export" layoutX="82.0" layoutY="250.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Exportar Jogo">
                      <FlowPane.margin>
                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                      </FlowPane.margin>
