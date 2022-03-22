@@ -8,12 +8,12 @@
 <?import br.com.teujogo.componentes.*?>
 
 <HBox prefHeight="197.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.teujogo.controller.MenuElementosController">
-    <DragCard  label="Adicionar personagem" onLargar="#teste"  >
+    <DragCard  label="Adicionar personagem" onLargar="#novoPersonagem"  >
 	  <HBox.margin>
          <Insets top="5.0" left="5.0" right="5.0" />
       </HBox.margin>
 	 </DragCard>
-	  <DragCard  label="Adicionar personagem" onLargar="#teste"  >
+	  <DragCard  label="Adicionar personagem" onLargar="#novoPersonagem"  >
 	  <HBox.margin>
          <Insets top="5.0" left="5.0" right="5.0" />
       </HBox.margin>

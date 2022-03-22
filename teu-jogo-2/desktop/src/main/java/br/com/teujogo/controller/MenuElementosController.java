@@ -32,9 +32,9 @@ public class MenuElementosController {
 	}
 	
 	@FXML
-	private void teste(MouseEvent event) {
+	private void novoPersonagem(MouseEvent event) {
 		event.consume();
-		System.out.println(9);
+	
 	}
 
 }

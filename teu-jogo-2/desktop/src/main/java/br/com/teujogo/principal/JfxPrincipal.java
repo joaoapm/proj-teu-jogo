@@ -32,6 +32,7 @@ public class JfxPrincipal {
 			primaryStage.show();
 
 			primaryStage.setTitle("Teu Jogo");
+
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
