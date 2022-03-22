@@ -2,6 +2,7 @@ package br.com.teujogo.controller;
 
 import java.io.IOException;
 
+import br.com.teujogo.ed.Elemento;
 import br.com.teujogo.principal.JfxPrincipal;
 import br.com.teujogo.principal.JmePrincipal;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ public class MenuElementosController {
 
 	public static final String MENU_PERSONAGENS = "telas/MenuElementosAddPersonagens.fxml";
 	public static final String MENU_ELEMENTOS = "telas/MenuElementosAddElementos.fxml";
+	public static final String MENU_EDT_PERSONAGEM = "telas/MenuElementosEdtPersonagens.fxml";
 
 	@FXML
 	public Pane pnlElementos;
@@ -40,5 +42,10 @@ public class MenuElementosController {
 			p.addPersonagem();
 		});
 	}
-
+	
+	@FXML
+	public void edtPersonagem(Elemento elemento) {
+		showMenu(MENU_EDT_PERSONAGEM);
+	}
+	
 }

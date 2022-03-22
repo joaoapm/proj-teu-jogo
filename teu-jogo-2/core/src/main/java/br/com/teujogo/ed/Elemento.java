@@ -7,7 +7,6 @@ import br.com.teujogo.enumeration.TipoElemento;
 
 public class Elemento extends Node {
 
-	// private Element elemento;
 	private TipoElemento tipoElemento;
 	private Geometry geometry;
 
@@ -15,10 +14,6 @@ public class Elemento extends Node {
 		this.geometry = geom;
 		this.tipoElemento = tipoElemento2;
 	}
-
-	// public Elemento(Element elemento) {
-	// this.elemento = elemento;
-	// }
 
 	public Geometry getGeometry() {
 		return geometry;
@@ -35,13 +30,5 @@ public class Elemento extends Node {
 	public void setTipoElemento(TipoElemento tipoElemento) {
 		this.tipoElemento = tipoElemento;
 	}
-
-	// public Element getElemento() {
-	// return elemento;
-	// }
-
-	// public void setElemento(Element elemento) {
-	// this.elemento = elemento;
-	// }
 
 }

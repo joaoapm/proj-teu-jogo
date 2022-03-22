@@ -5,10 +5,13 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import com.jayfella.jfx.embedded.SimpleJfxApplication;
 
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class JfxPrincipal {
 
@@ -32,6 +35,14 @@ public class JfxPrincipal {
 			primaryStage.show();
 
 			primaryStage.setTitle("Teu Jogo");
+
+			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+				@Override
+				public void handle(WindowEvent t) {
+					Platform.exit();
+					System.exit(0);
+				}
+			});
 
 		} catch (IOException e1) {
 			e1.printStackTrace();
