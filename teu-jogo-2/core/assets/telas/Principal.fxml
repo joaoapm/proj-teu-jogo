@@ -8,9 +8,12 @@
 <?import javafx.scene.layout.*?>
 <?import br.com.teujogo.componentes.*?>
 
-<HBox fx:id="pnlEsq" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1084.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.teujogo.controller.PrincipalController">
+<Pane fx:id="pnlEsq" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.teujogo.controller.PrincipalController">
    <children>
-      <VBox fx:id="pnlPrincipal" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="250.0" style="-fx-background-color: #fcba03;">
+   
+   	<StackPane fx:id="pnlJme" prefHeight="720.0" prefWidth="1083.0" style="-fx-background-color: #fff222;" />
+    
+   <VBox fx:id="pnlPrincipal" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="278.0" style="-fx-background-color: #fcba03;">
          <children>
             <Label text="Nome do Projeto">
                <VBox.margin>
@@ -29,7 +32,7 @@
                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                      </FlowPane.margin>
                   </Button>
-                  <Button fx:id="btnSalvarJogo" layoutX="82.0" layoutY="184.0" mnemonicParsing="false"  prefHeight="126.0" prefWidth="105.0" text="Salvar Jogo">
+                  <Button fx:id="btnSalvarJogo" layoutX="82.0" layoutY="184.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Salvar Jogo">
                      <FlowPane.margin>
                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                      </FlowPane.margin>
@@ -67,19 +70,13 @@
                </children>
             </FlowPane>
          </children>
-      </VBox>
-      <VBox fx:id="pnlDir" alignment="BOTTOM_RIGHT" prefHeight="720.0" prefWidth="839.0">
-         <children>
-		 
-            <StackPane fx:id="pnlJme" alignment="BOTTOM_LEFT" prefHeight="527.0" prefWidth="837.0"  />
-         
-			<Pane fx:id="pnlElementos" layoutX="10.0" layoutY="530.0" prefHeight="200.0" prefWidth="809.0" style="-fx-background-color: #3e62ab;">
-            <children>             
-   			   <fx:include fx:id="menuElementos" source="MenuElementos.fxml" />
-            </children>
-            </Pane>
-         
-		 </children>
-      </VBox>
+    </VBox>
+	  
+	<Pane fx:id="pnlElementos" layoutX="278.0" layoutY="537.0"  prefHeight="183.0" prefWidth="805.0" style="-fx-background-color: #3e62ab;">
+		<children>             
+			<fx:include fx:id="menuElementos" source="MenuElementos.fxml" />
+		</children>
+	</Pane>
+			
    </children>
-</HBox>
+</Pane>

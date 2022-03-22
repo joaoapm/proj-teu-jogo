@@ -26,7 +26,7 @@ public class JfxPrincipal {
 		try {
 			roo2t = FXMLLoader.load(getClass().getClassLoader().getResource("telas/Principal.fxml"));
 
-			Scene scene = new Scene(roo2t, 1084, 720);
+			Scene scene = new Scene(roo2t, 1080, 720);
 
 			primaryStage.setScene(scene);
 			primaryStage.show();

@@ -55,6 +55,7 @@ public class DragCard extends Pane {
 	}
 
 	private void setDragDrop() {
+		
 		this.setOnDragDetected(mouseEvent -> {
 			Dragboard db = this.startDragAndDrop(TransferMode.ANY);
 			WritableImage wi = new WritableImage((int) getWidth(), (int) getHeight());
@@ -69,7 +70,6 @@ public class DragCard extends Pane {
 		});
 
 		this.setOnDragDone(mouseEvent -> {
-			System.out.println(PrincipalController.ptDrop);		
 			onActionProperty().get().handle(mouseEvent); 
 		});
 

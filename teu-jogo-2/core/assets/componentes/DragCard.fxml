@@ -5,9 +5,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="178.0" prefWidth="127.0" type="javafx.scene.layout.Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="127.0" type="javafx.scene.layout.Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane fx:id="asd" prefHeight="178.0" prefWidth="127.0" style="-fx-background-color: #af7bc9;">
+      <Pane fx:id="asd" prefHeight="165.0" prefWidth="127.0" style="-fx-background-color: #af7bc9;">
          <children>
             <Label fx:id="testea" layoutX="1.0" layoutY="3.0" prefHeight="178.0" prefWidth="127.0" text="Adicionar personagem" textAlignment="CENTER" underline="true" wrapText="true">
                <font>

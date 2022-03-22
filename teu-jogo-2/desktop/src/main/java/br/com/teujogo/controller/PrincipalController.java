@@ -26,11 +26,15 @@ public class PrincipalController {
 
 	@FXML
 	private void initialize() {
-		SimpleJfxApplication app = JfxPrincipal.jfxApp.get();
-		EditorFxImageView asd = app.getImageView();
-		pnlJme.getChildren().add(asd);
+		initCanvas();
+	}
 
-		asd.requestFocus();
+	private void initCanvas() {
+		SimpleJfxApplication app = JfxPrincipal.jfxApp.get();
+		EditorFxImageView canv = app.getImageView();
+		canv.requestFocus();
+		pnlJme.getChildren().add(canv);
+
 		pnlJme.setOnDragOver(mouseEvent -> {
 			mouseEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
 		});
@@ -38,7 +42,8 @@ public class PrincipalController {
 		pnlJme.setOnDragDropped(mouseEvent -> {
 			mouseEvent.setDropCompleted(true);
 			mouseEvent.consume();
-			ptDrop = new Vector2f(Float.valueOf(String.valueOf(mouseEvent.getSceneX())).floatValue(), Float.valueOf(String.valueOf(mouseEvent.getSceneY())).floatValue());
+			ptDrop = new Vector2f(Float.valueOf(String.valueOf(mouseEvent.getSceneX())).floatValue(),
+					Float.valueOf(String.valueOf(mouseEvent.getSceneY())).floatValue());
 		});
 
 	}
