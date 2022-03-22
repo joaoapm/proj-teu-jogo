@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
@@ -21,7 +22,7 @@ import javafx.scene.layout.Pane;
 
 public class DragCard extends Pane {
 
-	private ObjectProperty<EventHandler<MouseEvent>> propertyOnXAction = new SimpleObjectProperty<EventHandler<MouseEvent>>();
+	private ObjectProperty<EventHandler<DragEvent>> propertyOnXAction = new SimpleObjectProperty<EventHandler<DragEvent>>();
 	private static final DataFormat CLIPBOARD_DATAFORMAT = new DataFormat("nbt-editor-item");
 
 	@FXML
@@ -68,20 +69,21 @@ public class DragCard extends Pane {
 		});
 
 		this.setOnDragDone(mouseEvent -> {
-			System.out.println(PrincipalController.ptDrop);			
+			System.out.println(PrincipalController.ptDrop);		
+			onActionProperty().get().handle(mouseEvent); 
 		});
 
 	}
 
-	public final ObjectProperty<EventHandler<MouseEvent>> onActionProperty() {
+	public final ObjectProperty<EventHandler<DragEvent>> onActionProperty() {
 		return propertyOnXAction;
 	}
 
-	public final void setOnLargar(EventHandler<MouseEvent> handler) {
+	public final void setOnLargar(EventHandler<DragEvent> handler) {
 		propertyOnXAction.set(handler);
 	}
 
-	public final EventHandler<MouseEvent> getOnLargar() {
+	public final EventHandler<DragEvent> getOnLargar() {
 		return propertyOnXAction.get();
 	}
 
