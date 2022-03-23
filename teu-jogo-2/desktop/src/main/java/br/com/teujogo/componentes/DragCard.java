@@ -2,7 +2,7 @@ package br.com.teujogo.componentes;
 
 import java.io.IOException;
 
-import br.com.teujogo.controller.PrincipalController;
+import br.com.teujogo.enumeration.TipoElemento;
 import javafx.beans.NamedArg;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -16,7 +16,6 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
 
@@ -33,13 +32,16 @@ public class DragCard extends Pane {
 
 	private String label;
 
-	public DragCard(@NamedArg("label") String label) {
-		FXMLLoader fxmlloader = new FXMLLoader(getClass().getClassLoader().getResource("componentes/DragCard.fxml"));
+	private TipoElemento tipo;
 
+	public DragCard(@NamedArg("label") String label, @NamedArg("tipo") String tipoS) {
+		FXMLLoader fxmlloader = new FXMLLoader(getClass().getClassLoader().getResource("componentes/DragCard.fxml"));
+		
 		fxmlloader.setRoot(this);
 		fxmlloader.setController(this);
 		this.label = label;
-
+		tipo =  TipoElemento.getElementoByName(tipoS);
+		
 		try {
 			fxmlloader.load();
 		} catch (IOException e) {
@@ -55,7 +57,7 @@ public class DragCard extends Pane {
 	}
 
 	private void setDragDrop() {
-		
+
 		this.setOnDragDetected(mouseEvent -> {
 			Dragboard db = this.startDragAndDrop(TransferMode.ANY);
 			WritableImage wi = new WritableImage((int) getWidth(), (int) getHeight());
@@ -70,7 +72,7 @@ public class DragCard extends Pane {
 		});
 
 		this.setOnDragDone(mouseEvent -> {
-			onActionProperty().get().handle(mouseEvent); 
+			onActionProperty().get().handle(mouseEvent);
 		});
 
 	}
@@ -87,4 +89,11 @@ public class DragCard extends Pane {
 		return propertyOnXAction.get();
 	}
 
+	public TipoElemento getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoElemento tipo) {
+		this.tipo = tipo;
+	}
 }

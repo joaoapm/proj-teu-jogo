@@ -13,6 +13,7 @@ import br.com.teujogo.util.GerenciadorArquivos;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 
@@ -22,7 +23,12 @@ public class PrincipalController {
 	public StackPane pnlJme;
 
 	@FXML
+	public HBox pnlElementosAdd;
+	public static HBox pnlElementosAddRef;
+
+	@FXML
 	private MenuElementosController menuElementosController;
+	public static MenuElementosController menuElementosControllerRef;
 
 	public static Vector2f ptDrop;
 
@@ -33,6 +39,8 @@ public class PrincipalController {
 	@FXML
 	private void initialize() {
 		initCanvas();
+		pnlElementosAddRef = pnlElementosAdd;
+		menuElementosControllerRef = menuElementosController;
 	}
 
 	private void initCanvas() {
@@ -49,16 +57,12 @@ public class PrincipalController {
 		});
 
 		pnlJme.setOnMouseReleased(mouseEvent -> {
-
 			ptDrop = new Vector2f(Float.valueOf(String.valueOf(mouseEvent.getSceneX())).floatValue(),
 					Float.valueOf(String.valueOf(mouseEvent.getSceneY())).floatValue());
-
 			menuElementosController.edtPersonagem(app.selectiona());
-
 			app.enqueue(() -> {
 				app.gizRemove();
 			});
-
 		});
 
 		pnlJme.setOnDragOver(mouseEvent -> {
@@ -112,8 +116,13 @@ public class PrincipalController {
 			app.enqueue(() -> {
 				new GerenciadorArquivos().exporta(new TelaED(app, file));
 			});
-
 		}
+	}
+
+	@FXML
+	private void montarFase(MouseEvent event) {
+		event.consume();
+		menuElementosController.showMenu(MenuElementosController.MENU_MONTAR_FASE);
 	}
 
 }

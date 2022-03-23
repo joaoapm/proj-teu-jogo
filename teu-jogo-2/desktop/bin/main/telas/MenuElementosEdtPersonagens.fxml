@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import br.com.teujogo.componentes.*?>
 
-<HBox prefHeight="183.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.teujogo.controller.MenuElementosController">
+<HBox prefHeight="183.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.teujogo.controller.MenuElementosEdtPersonagemController">
    <children>
   
       <GridPane prefHeight="150.0" prefWidth="130.0" style="-fx-background-color: #b5736e;">
@@ -19,7 +19,7 @@
           <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="99.0" valignment="TOP" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="200.0" text="Perso" textAlignment="RIGHT" GridPane.rowIndex="1" />
+            <Label fx:id="lblPerso" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="200.0"  textAlignment="RIGHT" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" prefHeight="91.0" prefWidth="99.0" text="Button" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>

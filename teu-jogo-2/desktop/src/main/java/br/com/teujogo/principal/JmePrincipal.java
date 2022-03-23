@@ -9,9 +9,11 @@ import com.jme3.collision.CollisionResult;
 import com.jme3.collision.CollisionResults;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
+import com.jme3.math.Quaternion;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
+import com.jme3.renderer.Camera;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.shape.Box;
@@ -21,8 +23,6 @@ import br.com.teujogo.controller.PrincipalController;
 import br.com.teujogo.ed.Elemento;
 import br.com.teujogo.enumeration.TipoElemento;
 import br.com.teujogo.util.Gizmo;
-import javafx.fxml.FXML;
-import javafx.scene.input.DragEvent;
 
 public class JmePrincipal extends SimpleJfxApplication {
 
@@ -68,7 +68,7 @@ public class JmePrincipal extends SimpleJfxApplication {
 		return currentThread.getId();
 	}
 
-	public void addPersonagem() {
+	public void addPersonagem(TipoElemento tipo) {
 
 		CollisionResults results = new CollisionResults();
 
@@ -89,18 +89,34 @@ public class JmePrincipal extends SimpleJfxApplication {
 
 			System.out.println("Colisao[" + hit + " at " + pt + ", " + dist + "]");
 
-			Box b = new Box(2, 2, 2);
-			Geometry geom = new Geometry("Box", b);
-			Material mat = new Material(getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
-			mat.setBoolean("UseMaterialColors", true);
-			mat.setColor("Diffuse", ColorRGBA.Magenta);
-			mat.setColor("Ambient", ColorRGBA.Magenta);
-			geom.setMaterial(mat);
-			getRootNode().attachChild(geom);
-			geom.setLocalTranslation(pt);
-			elementos.attachChild(geom);
-			listaElementos.add(new Elemento(geom, TipoElemento.HUMANOIDE));
-
+			if (tipo.equals(TipoElemento.HUMANOIDE)) {
+				
+				Box b = new Box(2, 2, 2);
+				Geometry geom = new Geometry("Box", b);
+				Material mat = new Material(getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
+				mat.setBoolean("UseMaterialColors", true);
+				mat.setColor("Diffuse", ColorRGBA.Magenta);
+				mat.setColor("Ambient", ColorRGBA.Magenta);
+				geom.setMaterial(mat);
+				getRootNode().attachChild(geom);
+				geom.setLocalTranslation(pt);
+				elementos.attachChild(geom);
+				listaElementos.add(new Elemento(geom, TipoElemento.HUMANOIDE));
+				
+			} else if (tipo.equals(TipoElemento.VEICULO)) {
+				
+				Box b = new Box(2, 1, 1);
+				Geometry geom = new Geometry("Box", b);
+				Material mat = new Material(getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
+				mat.setBoolean("UseMaterialColors", true);
+				mat.setColor("Diffuse", ColorRGBA.Cyan);
+				mat.setColor("Ambient", ColorRGBA.Cyan);
+				geom.setMaterial(mat);
+				getRootNode().attachChild(geom);
+				geom.setLocalTranslation(pt);
+				elementos.attachChild(geom);
+				listaElementos.add(new Elemento(geom, TipoElemento.VEICULO));
+			}
 		}
 	}
 
@@ -149,9 +165,77 @@ public class JmePrincipal extends SimpleJfxApplication {
 			}
 		}
 	}
-	
+
 	public void gizRemove() {
 		gizmo.resetGizmo();
+	}
+
+	public void moveCamE() {
+		Camera cam = c.cam;
+		Vector3f pos = cam.getLocation();
+		pos.x -= 1;
+		cam.setLocation(pos);
+		cam.updateViewProjection();
+	}
+
+	public void moveCamD() {
+		Camera cam = c.cam;
+		Vector3f pos = cam.getLocation();
+		pos.x += 1;
+		cam.setLocation(pos);
+		cam.updateViewProjection();
+	}
+
+	public void moveCamC() {
+		Camera cam = c.cam;
+		Vector3f pos = cam.getLocation();
+		pos.y += 1;
+		cam.setLocation(pos);
+		cam.updateViewProjection();
+	}
+
+	public void moveCamB() {
+		Camera cam = c.cam;
+		Vector3f pos = cam.getLocation();
+		pos.y -= 1;
+		cam.setLocation(pos);
+		cam.updateViewProjection();
+	}
+
+	public void roteCamC() {
+		Camera cam = c.cam;
+
+		Quaternion rotate = new Quaternion();
+
+		rotate.fromAngleNormalAxis(0.01f, new Vector3f(1, 0, 0));
+		Quaternion q = rotate.mult(cam.getRotation());
+		cam.setRotation(q);
+	}
+
+	public void roteCamB() {
+		Camera cam = c.cam;
+
+		Quaternion rotate = new Quaternion();
+
+		rotate.fromAngleNormalAxis(-0.01f, new Vector3f(1, 0, 0));
+		Quaternion q = rotate.mult(cam.getRotation());
+		cam.setRotation(q);
+	}
+
+	public void moveCamF() {
+		Camera cam = c.cam;
+		Vector3f pos = cam.getLocation();
+		pos.z -= 1;
+		cam.setLocation(pos);
+		cam.updateViewProjection();
+	}
+
+	public void moveCamT() {
+		Camera cam = c.cam;
+		Vector3f pos = cam.getLocation();
+		pos.z += 1;
+		cam.setLocation(pos);
+		cam.updateViewProjection();
 	}
 
 }
