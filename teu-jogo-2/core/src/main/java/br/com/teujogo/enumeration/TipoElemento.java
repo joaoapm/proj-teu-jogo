@@ -2,7 +2,7 @@ package br.com.teujogo.enumeration;
 
 public enum TipoElemento {
 
-	HUMANOIDE(1, "Humanóide", "H"), VEICULO(2, "Veículo", "V"), TEMPO(3, "Tempo", "T");
+	HUMANOIDE(1, "Humanóide", "H"), VEICULO(2, "Veículo", "V"), ACAO(3, "Ação", "A"), TEMPO(4, "Tempo", "T");
 
 	private int valor;
 	private String descricao;
@@ -33,6 +33,8 @@ public enum TipoElemento {
 			return VEICULO;
 		} else if (TEMPO.valor == valor) {
 			return TEMPO;
+		} else if (ACAO.valor == valor) {
+			return ACAO;
 		}
 		return null;
 	}
@@ -44,6 +46,8 @@ public enum TipoElemento {
 			return VEICULO;
 		} else if (TEMPO.name().equals(valor)) {
 			return TEMPO;
+		} else if (ACAO.name().equals(valor)) {
+			return ACAO;
 		}
 		return null;
 	}

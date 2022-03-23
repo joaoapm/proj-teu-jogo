@@ -3,7 +3,7 @@ package br.com.teujogo.componentes;
 import br.com.teujogo.enumeration.TipoElemento;
 import javafx.scene.control.Button;
 
-public class BotaoElemento extends Button{
+public class ElementoJogo extends Button{
 
 	private TipoElemento tipoElemento;
 

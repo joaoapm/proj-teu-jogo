@@ -2,7 +2,7 @@ package br.com.teujogo.controller;
 
 import java.io.IOException;
 
-import br.com.teujogo.componentes.BotaoElemento;
+import br.com.teujogo.componentes.ElementoJogo;
 import br.com.teujogo.componentes.DragCard;
 import br.com.teujogo.ed.Elemento;
 import br.com.teujogo.enumeration.TipoElemento;
@@ -16,29 +16,18 @@ import javafx.scene.layout.Pane;
 
 public class MenuElementosController {
 
-	public static final String MENU_PERSONAGENS = "/telas/MenuElementosAddPersonagens.fxml";
-	public static final String MENU_ELEMENTOS = "/telas/MenuElementosAddElementos.fxml";
-	public static final String MENU_EDT_PERSONAGEM = "/telas/MenuElementosEdtPersonagens.fxml";
-	public static final String MENU_MONTAR_FASE = "/telas/MenuElementosMontarFase.fxml";
-	public static final String MENU_EDT_ELEMENTO = "/telas/MenuElementosEdtElemento.fxml";
+	public static final String MENU_PERSONAGENS = "/telas/MenuElementos/MenuElementosAddPersonagens.fxml";
+	public static final String MENU_ELEMENTOS = "/telas/MenuElementos/MenuElementosAddElementos.fxml";
+	public static final String MENU_EDT_PERSONAGEM = "/telas/MenuElementos/MenuElementosEdtPersonagens.fxml";
+	public static final String MENU_MONTAR_FASE = "/telas/MenuElementos/MenuElementosMontarFase.fxml";
+	public static final String MENU_EDT_ELEMENTO_TEMPO = "/telas/MenuElementos/MenuElementosEdtElementoTempo.fxml";
+	public static final String MENU_EDT_ELEMENTO_ACAO = "/telas/MenuElementos/MenuElementosEdtElementoAcao.fxml";
 
 	@FXML
 	public Pane pnlElementos;
 
 	public MenuElementosController() {
 		super();
-	}
-
-	public void showMenu(String menu) {
-
-		try {
-			pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(menu));
-			Parent root = (Parent) fxmlLoader.load(); 
-			pnlElementos.getChildren().add(root);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@FXML
@@ -52,13 +41,30 @@ public class MenuElementosController {
 
 	@FXML
 	private void novoElemento(DragEvent event) {
-		BotaoElemento b = new BotaoElemento();
-		b.setText(TipoElemento.TEMPO.getTxtBtn());
-		b.setTipoElemento(TipoElemento.TEMPO);
+		ElementoJogo b = new ElementoJogo();
+		DragCard dc = (DragCard) event.getSource();
+		b.setText(dc.getTipo().getTxtBtn());
+		b.setTipoElemento(dc.getTipo());
 		b.setOnMouseReleased(mouseEvent -> {
-			PrincipalController.menuElementosControllerRef.showMenu(MENU_EDT_ELEMENTO);
+			PrincipalController.menuElementosControllerRef.edtElemento(b);
 		});
 		PrincipalController.pnlElementosAddRef.getChildren().add(b);
+	}
+
+	@FXML
+	public void edtElemento(ElementoJogo elemento) {
+		if (elemento != null) {
+			try {
+				if (elemento.getTipoElemento().equals(TipoElemento.TEMPO)) {
+					carregaEdtElementoObj(MENU_EDT_ELEMENTO_TEMPO, elemento);
+				} else if (elemento.getTipoElemento().equals(TipoElemento.ACAO)) {
+					carregaEdtElementoObj(MENU_EDT_ELEMENTO_ACAO, elemento);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
 	}
 
 	@FXML
@@ -68,13 +74,35 @@ public class MenuElementosController {
 				pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MENU_EDT_PERSONAGEM));
 				Parent root = (Parent) fxmlLoader.load();
-				MenuElementosEdtPersonagemController controller = fxmlLoader.<MenuElementosEdtPersonagemController>getController();
+				MenuElementosEdtPersonagemController controller = fxmlLoader
+						.<MenuElementosEdtPersonagemController>getController();
 				pnlElementos.getChildren().add(root);
 				controller.atualiza(elemento);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 
+		}
+	}
+
+	public void carregaEdtElementoObj(String menu, ElementoJogo ele) throws IOException {
+		pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(menu));
+		Parent root = (Parent) fxmlLoader.load();
+		EdtElemento controller = fxmlLoader.<EdtElemento>getController();
+		pnlElementos.getChildren().add(root);
+		controller.atualiza(ele);
+	}
+
+	public void showMenu(String menu) {
+
+		try {
+			pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(menu));
+			Parent root = (Parent) fxmlLoader.load();
+			pnlElementos.getChildren().add(root);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
