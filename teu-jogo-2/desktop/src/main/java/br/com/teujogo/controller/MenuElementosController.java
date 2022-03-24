@@ -11,11 +11,14 @@ import br.com.teujogo.principal.JmePrincipal;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.input.DataFormat;
 import javafx.scene.input.DragEvent;
 import javafx.scene.layout.Pane;
 
 public class MenuElementosController {
 
+	public static final DataFormat CLIPBOARD_DATAFORMAT = new DataFormat("nbt-editor-item-snip");
+	
 	public static final String MENU_PERSONAGENS = "/telas/MenuElementos/MenuElementosAddPersonagens.fxml";
 	public static final String MENU_ELEMENTOS = "/telas/MenuElementos/MenuElementosAddElementos.fxml";
 	public static final String MENU_EDT_PERSONAGEM = "/telas/MenuElementos/MenuElementosEdtPersonagens.fxml";
@@ -104,6 +107,16 @@ public class MenuElementosController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	public void addRegra(ElementoJogo elemento) {
+		 
+	}
+	
+	@FXML
+	public void remRegra(ElementoJogo elemento) {
+		 
 	}
 
 }

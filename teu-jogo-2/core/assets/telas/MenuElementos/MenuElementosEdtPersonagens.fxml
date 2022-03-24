@@ -19,7 +19,7 @@
           <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="99.0" valignment="TOP" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="lblPerso" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="200.0"  textAlignment="RIGHT" GridPane.rowIndex="1" />
+            <Label fx:id="lblPerso" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="200.0" textAlignment="RIGHT" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" prefHeight="91.0" prefWidth="99.0" text="Button" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
@@ -62,7 +62,7 @@
          <children>
             <ScrollPane prefHeight="161.0" prefWidth="320.0">
                <content>
-                  <VBox fx:id="propriedades1" prefHeight="158.0" prefWidth="307.0">
+                  <VBox fx:id="regras" prefHeight="158.0" prefWidth="307.0">
                      <children>
            
                      </children>
@@ -76,12 +76,12 @@
       </FlowPane>
       <VBox alignment="TOP_CENTER" prefHeight="197.0" prefWidth="49.0">
          <children>
-            <Button mnemonicParsing="false" text="+">
+            <Button mnemonicParsing="false" onMouseReleased="#addRegra" text="+">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="- " textAlignment="CENTER">
+            <Button contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseReleased="#remRegra" text="- " textAlignment="CENTER">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

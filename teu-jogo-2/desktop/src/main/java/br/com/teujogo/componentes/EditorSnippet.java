@@ -2,7 +2,8 @@ package br.com.teujogo.componentes;
 
 import java.io.IOException;
 
-import br.com.teujogo.enumeration.TipoElemento;
+import br.com.teujogo.controller.MenuElementosController;
+import br.com.teujogo.enumeration.TipoSnippet;
 import javafx.beans.NamedArg;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -13,34 +14,37 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DataFormat;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.FlowPane;
 
-public class DragCard extends Pane {
+public class EditorSnippet extends FlowPane {
 
 	private ObjectProperty<EventHandler<DragEvent>> propertyOnXAction = new SimpleObjectProperty<EventHandler<DragEvent>>();
-	private static final DataFormat CLIPBOARD_DATAFORMAT = new DataFormat("nbt-editor-item");
 
 	@FXML
-	private Label testea;
+	private Label lblSnippet;
 
-	@FXML
-	private Pane asd;
+	private String lblSnippetTxt;
+	
+	private TipoSnippet tipoSnippet;
 
-	private String label;
+	public TipoSnippet getTipoSnippet() {
+		return tipoSnippet;
+	}
 
-	private TipoElemento tipo;
+	public void setTipoSnippet(TipoSnippet tipoSnippet) {
+		this.tipoSnippet = tipoSnippet;
+	}
 
-	public DragCard(@NamedArg("label") String label, @NamedArg("tipo") String tipoS) {
-		FXMLLoader fxmlloader = new FXMLLoader(getClass().getClassLoader().getResource("componentes/DragCard.fxml"));
+	public EditorSnippet(@NamedArg("label") String label) {
+		FXMLLoader fxmlloader = new FXMLLoader(
+				getClass().getClassLoader().getResource("componentes/EditorSnippet.fxml"));
 
 		fxmlloader.setRoot(this);
 		fxmlloader.setController(this);
-		this.label = label;
-		tipo = TipoElemento.getElementoByName(tipoS);
+		this.lblSnippetTxt = label;
 
 		try {
 			fxmlloader.load();
@@ -53,7 +57,7 @@ public class DragCard extends Pane {
 	@FXML
 	private void initialize() {
 		setDragDrop();
-		testea.setText(label);
+		lblSnippet.setText(lblSnippetTxt);
 	}
 
 	private void setDragDrop() {
@@ -66,7 +70,7 @@ public class DragCard extends Pane {
 			db.setDragViewOffsetX(getWidth() / 2);
 			db.setDragViewOffsetY(getHeight() / 2);
 			ClipboardContent cbc = new ClipboardContent();
-			cbc.put(CLIPBOARD_DATAFORMAT, true);
+			cbc.put(MenuElementosController.CLIPBOARD_DATAFORMAT, true);
 			db.setContent(cbc);
 			mouseEvent.consume();
 		});
@@ -88,13 +92,5 @@ public class DragCard extends Pane {
 
 	public final EventHandler<DragEvent> getOnLargar() {
 		return propertyOnXAction.get();
-	}
-
-	public TipoElemento getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(TipoElemento tipo) {
-		this.tipo = tipo;
 	}
 }

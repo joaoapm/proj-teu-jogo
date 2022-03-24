@@ -6,6 +6,7 @@ import java.io.IOException;
 import com.jayfella.jfx.embedded.jfx.EditorFxImageView;
 import com.jme3.math.Vector2f;
 
+import br.com.teujogo.componentes.DragCard;
 import br.com.teujogo.ed.TelaED;
 import br.com.teujogo.principal.JfxPrincipal;
 import br.com.teujogo.principal.JmePrincipal;
@@ -66,14 +67,18 @@ public class PrincipalController {
 		});
 
 		pnlJme.setOnDragOver(mouseEvent -> {
-			mouseEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+			if (mouseEvent.getGestureSource().getClass() == DragCard.class) {
+				mouseEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+			}
 		});
 
 		pnlJme.setOnDragDropped(mouseEvent -> {
-			mouseEvent.setDropCompleted(true);
-			mouseEvent.consume();
-			ptDrop = new Vector2f(Float.valueOf(String.valueOf(mouseEvent.getSceneX())).floatValue(),
-					Float.valueOf(String.valueOf(mouseEvent.getSceneY())).floatValue());
+			if (mouseEvent.getGestureSource().getClass() == DragCard.class) {
+				mouseEvent.setDropCompleted(true);
+				mouseEvent.consume();
+				ptDrop = new Vector2f(Float.valueOf(String.valueOf(mouseEvent.getSceneX())).floatValue(),
+						Float.valueOf(String.valueOf(mouseEvent.getSceneY())).floatValue());
+			}
 		});
 
 	}
