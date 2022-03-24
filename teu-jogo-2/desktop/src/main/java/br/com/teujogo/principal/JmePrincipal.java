@@ -1,8 +1,5 @@
 package br.com.teujogo.principal;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.jayfella.jfx.embedded.SimpleJfxApplication;
 import com.jme3.app.state.AppState;
 import com.jme3.collision.CollisionResult;
@@ -16,6 +13,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
+import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
 
 import br.com.teujogo.Carregador;
@@ -30,7 +28,6 @@ public class JmePrincipal extends SimpleJfxApplication {
 	public Node shootables;
 	public Node elementos;
 	public Node elementosAlt;
-	public static List<Elemento> listaElementos = new ArrayList<Elemento>();
 	private Gizmo gizmo = new Gizmo();
 
 	public void elementosAltAdd(Geometry e) {
@@ -90,7 +87,7 @@ public class JmePrincipal extends SimpleJfxApplication {
 			System.out.println("Colisao[" + hit + " at " + pt + ", " + dist + "]");
 
 			if (tipo.equals(TipoElemento.HUMANOIDE)) {
-				
+
 				Box b = new Box(2, 2, 2);
 				Geometry geom = new Geometry("Box", b);
 				Material mat = new Material(getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
@@ -100,11 +97,10 @@ public class JmePrincipal extends SimpleJfxApplication {
 				geom.setMaterial(mat);
 				getRootNode().attachChild(geom);
 				geom.setLocalTranslation(pt);
-				elementos.attachChild(geom);
-				listaElementos.add(new Elemento(geom, TipoElemento.HUMANOIDE));
-				
+				elementos.attachChild(new Elemento(geom, tipo));
+
 			} else if (tipo.equals(TipoElemento.VEICULO)) {
-				
+
 				Box b = new Box(2, 1, 1);
 				Geometry geom = new Geometry("Box", b);
 				Material mat = new Material(getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
@@ -114,8 +110,7 @@ public class JmePrincipal extends SimpleJfxApplication {
 				geom.setMaterial(mat);
 				getRootNode().attachChild(geom);
 				geom.setLocalTranslation(pt);
-				elementos.attachChild(geom);
-				listaElementos.add(new Elemento(geom, TipoElemento.VEICULO));
+				elementos.attachChild(new Elemento(geom, tipo));
 			}
 		}
 	}
@@ -132,15 +127,21 @@ public class JmePrincipal extends SimpleJfxApplication {
 		elementos.collideWith(ray, results);
 
 		if (results.size() > 0) {
-			CollisionResult closest = results.getClosestCollision();
+			Elemento e = getElemento(results);
+			gizmo.criaGizmo(e);
+			return e;
+		}
+		return null;
+	}
 
-			for (Elemento ele : listaElementos) {
-				if (ele.getGeometry() != null && ele.getGeometry().equals(closest.getGeometry())) {
-					gizmo.criaGizmo(ele);
-					return ele;
-				}
+	private Elemento getElemento(CollisionResults results) {
+		CollisionResult closest = results.getClosestCollision();
+		for (Spatial ele : elementos.getChildren()) {
+			Elemento e = (Elemento) ele;
+			if (e.getGeometry() != null && e.getGeometry().equals(closest.getGeometry())) {
+				gizmo.criaGizmo(e);
+				return e;
 			}
-
 		}
 		return null;
 	}

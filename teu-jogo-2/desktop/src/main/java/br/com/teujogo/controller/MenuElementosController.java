@@ -77,8 +77,7 @@ public class MenuElementosController {
 				pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MENU_EDT_PERSONAGEM));
 				Parent root = (Parent) fxmlLoader.load();
-				MenuElementosEdtPersonagemController controller = fxmlLoader
-						.<MenuElementosEdtPersonagemController>getController();
+				MenuElementosEdtPersonagemController controller = fxmlLoader .<MenuElementosEdtPersonagemController>getController();
 				pnlElementos.getChildren().add(root);
 				controller.atualiza(elemento);
 			} catch (IOException e) {
