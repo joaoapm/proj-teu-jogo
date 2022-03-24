@@ -8,5 +8,5 @@
 <?import br.com.teujogo.componentes.*?>
 
 <VBox prefHeight="183.0" prefWidth="802.0" style="-fx-background-color: #e19ee8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.teujogo.controller.MenuElementosEdtElementoAcaoController">
-   <Editor />
+   <Editor  onFechar="#fechared" onRemover="#removerReg"  />
 </VBox>

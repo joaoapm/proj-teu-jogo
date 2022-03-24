@@ -1,5 +1,7 @@
 package br.com.teujogo.ed;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Queue;
 
 import com.jme3.bounding.BoundingVolume;
@@ -7,7 +9,6 @@ import com.jme3.collision.Collidable;
 import com.jme3.collision.CollisionResults;
 import com.jme3.collision.UnsupportedCollisionException;
 import com.jme3.scene.Geometry;
-import com.jme3.scene.Node;
 import com.jme3.scene.SceneGraphVisitor;
 import com.jme3.scene.Spatial;
 
@@ -17,6 +18,7 @@ public class Elemento extends Spatial {
 
 	private TipoElemento tipoElemento;
 	private Geometry geometry;
+	private List<Regra> regras = new ArrayList<Regra>();
 
 	public Elemento(Geometry geom, TipoElemento tipoElemento2) {
 		this.geometry = geom;
@@ -41,6 +43,14 @@ public class Elemento extends Spatial {
 
 	public void setTipoElemento(TipoElemento tipoElemento) {
 		this.tipoElemento = tipoElemento;
+	}
+
+	public List<Regra> getRegras() {
+		return regras;
+	}
+
+	public void setRegras(List<Regra> regras) {
+		this.regras = regras;
 	}
 
 	@Override

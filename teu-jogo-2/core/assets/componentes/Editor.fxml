@@ -17,9 +17,19 @@
             <Font name="Courier New Bold" size="18.0" />
          </font></TextArea>
       <VBox prefHeight="173.0" prefWidth="24.0" style="-fx-background-color: #d1e4e6;" />
-      <FlowPane fx:id="snippets" hgap="5.0" prefHeight="173.0" prefWidth="313.0" style="-fx-background-color: #dfcfe3;" vgap="5.0">
+      <FlowPane fx:id="snippets" hgap="5.0" prefHeight="173.0" prefWidth="292.0" style="-fx-background-color: #dfcfe3;" vgap="5.0">
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding></FlowPane>
+      <VBox layoutX="457.0" layoutY="15.0" prefHeight="173.0" prefWidth="24.0" style="-fx-background-color: #d1e4e6;">
+         <children>
+            <Button fx:id="btnFechar" mnemonicParsing="false" onMouseReleased="#aoFechar" text="X" />
+            <Button fx:id="btnRemover" layoutX="10.0" layoutY="10.0" onMouseReleased="#aoRemover" mnemonicParsing="false" text="R">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
    </children> 
 </fx:root>

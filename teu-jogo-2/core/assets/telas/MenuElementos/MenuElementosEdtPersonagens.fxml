@@ -58,30 +58,31 @@
             <Insets left="5.0" />
          </padding>
       </FlowPane>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" layoutX="145.0" layoutY="15.0" prefHeight="197.0" prefWidth="320.0" style="-fx-background-color: #9edec2;" vgap="5.0">
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="5.0" layoutX="145.0" layoutY="15.0" prefHeight="197.0" prefWidth="320.0" style="-fx-background-color: #9edec2;" vgap="5.0">
          <children>
-            <ScrollPane prefHeight="161.0" prefWidth="320.0">
+            <ScrollPane prefHeight="161.0" prefWidth="308.0">
                <content>
-                  <VBox fx:id="regras" prefHeight="158.0" prefWidth="307.0">
+                  <FlowPane fx:id="regras" hgap="5.0" prefHeight="158.0" prefWidth="290.0" vgap="5.0">
                      <children>
            
                      </children>
-                  </VBox>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </FlowPane>
                </content>
+               <FlowPane.margin>
+                  <Insets right="5.0" />
+               </FlowPane.margin>
             </ScrollPane>
          </children>
          <padding>
             <Insets left="5.0" />
          </padding>
       </FlowPane>
-      <VBox alignment="TOP_CENTER" prefHeight="197.0" prefWidth="49.0">
+      <VBox alignment="TOP_CENTER" prefHeight="173.0" prefWidth="39.0">
          <children>
-            <Button mnemonicParsing="false"   text="+">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false"   text="- " textAlignment="CENTER">
+            <Button mnemonicParsing="false" onMouseReleased="#addRegra" text="+">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
