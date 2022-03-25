@@ -1,5 +1,6 @@
 package br.com.teujogo.init;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 import com.jayfella.jfx.embedded.SimpleJfxApplication;
@@ -35,12 +36,14 @@ public class InitFxJme extends Application {
 			myJmeGame.setDisplayStatView(false);
 
 			jfxApp.set(myJmeGame);
-
+ 
 			jfxApp.get().start();
+			
 
 		}, "LWJGL Render").start();
 
 		while (jfxApp.get() == null || !jfxApp.get().isInitialized()) {
+			
 			Thread.sleep(10);
 		}
 

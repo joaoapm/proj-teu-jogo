@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import br.com.teujogo.componentes.*?>
+
+<fx:root prefHeight="183.0" prefWidth="802.0" spacing="5.0" style="-fx-background-color: #e19ee8;" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <children>
+      <TextArea fx:id="areaTexto" prefHeight="173.0" prefWidth="437.0" wrapText="true">
+         <font>
+            <Font name="Courier New Bold" size="18.0" />
+         </font></TextArea>
+      <VBox prefHeight="173.0" prefWidth="24.0" style="-fx-background-color: #d1e4e6;" />
+      <FlowPane fx:id="snippets" hgap="5.0" prefHeight="173.0" prefWidth="292.0" style="-fx-background-color: #dfcfe3;" vgap="5.0">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding></FlowPane>
+      <VBox layoutX="457.0" layoutY="15.0" prefHeight="173.0" prefWidth="24.0" style="-fx-background-color: #d1e4e6;">
+         <children>
+            <Button fx:id="btnFechar" mnemonicParsing="false" onMouseReleased="#aoFechar" text="X" />
+            <Button fx:id="btnRemover" layoutX="10.0" layoutY="10.0" onMouseReleased="#aoRemover" mnemonicParsing="false" text="R">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children> 
+</fx:root>

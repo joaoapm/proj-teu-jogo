@@ -1,6 +1,7 @@
 package br.com.teujogo.principal;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 import com.jayfella.jfx.embedded.SimpleJfxApplication;
@@ -35,7 +36,8 @@ public class JfxPrincipal {
 			primaryStage.show();
 
 			primaryStage.setTitle("Teu Jogo");
-
+	        TimeUnit.SECONDS.sleep(1);
+	        primaryStage.getScene().getRoot().resize(1080, 725);
 			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				@Override
 				public void handle(WindowEvent t) {
@@ -46,6 +48,9 @@ public class JfxPrincipal {
 
 		} catch (IOException e1) {
 			e1.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
