@@ -87,11 +87,12 @@ public class Carregador extends SimpleApplication {
 		plano = geom;
 	}
 
-	public void inciaLuz(SimpleApplication simpleApplication) {
+	public DirectionalLight inciaLuz(SimpleApplication simpleApplication) {
 		DirectionalLight sun = new DirectionalLight();
 		sun.setDirection(new Vector3f(0.5f, -1, -0.5f).normalizeLocal());
 		sun.setColor(new ColorRGBA(ColorRGBA.White));
 		simpleApplication.getRootNode().addLight(sun);
+		return sun;
 	}
 
 	private void processArquivo() throws FileNotFoundException, Exception {

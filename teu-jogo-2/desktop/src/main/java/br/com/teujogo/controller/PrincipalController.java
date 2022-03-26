@@ -7,6 +7,7 @@ import com.jayfella.jfx.embedded.jfx.EditorFxImageView;
 import com.jme3.math.Vector2f;
 
 import br.com.teujogo.componentes.DragCard;
+import br.com.teujogo.componentes.Obj;
 import br.com.teujogo.ed.TelaED;
 import br.com.teujogo.principal.JfxPrincipal;
 import br.com.teujogo.principal.JmePrincipal;
@@ -58,9 +59,12 @@ public class PrincipalController {
 		});
 
 		pnlJme.setOnMouseReleased(mouseEvent -> {
+
 			ptDrop = new Vector2f(Float.valueOf(String.valueOf(mouseEvent.getSceneX())).floatValue(),
 					Float.valueOf(String.valueOf(mouseEvent.getSceneY())).floatValue());
+			
 			menuElementosController.edtPersonagem(app.selectiona());
+
 			app.enqueue(() -> {
 				app.gizRemove();
 			});
@@ -69,11 +73,14 @@ public class PrincipalController {
 		pnlJme.setOnDragOver(mouseEvent -> {
 			if (mouseEvent.getGestureSource().getClass() == DragCard.class) {
 				mouseEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+			} else if (mouseEvent.getGestureSource().getClass() == Obj.class) {
+				mouseEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
 			}
 		});
 
 		pnlJme.setOnDragDropped(mouseEvent -> {
-			if (mouseEvent.getGestureSource().getClass() == DragCard.class) {
+			if (mouseEvent.getGestureSource().getClass() == DragCard.class
+					|| mouseEvent.getGestureSource().getClass() == Obj.class) {
 				mouseEvent.setDropCompleted(true);
 				mouseEvent.consume();
 				ptDrop = new Vector2f(Float.valueOf(String.valueOf(mouseEvent.getSceneX())).floatValue(),

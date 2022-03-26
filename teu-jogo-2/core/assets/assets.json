@@ -1,0 +1,28 @@
+[  
+    {  
+        "nome":"Boneco",
+        "modelo":"Boneco",
+        "imgBtn" : "BonecoBtn",
+        "tipo": "obj" 
+    } , {  
+        "nome":"Animal",
+        "modelo":"Animal",
+        "imgBtn" : "AnimalBtn",
+        "tipo": "obj" 
+    }, {  
+        "nome":"Cadeira",
+        "modelo":"Cadeira",
+        "imgBtn" : "CadeiraBtn",
+        "tipo": "obj" 
+    }, {  
+        "nome":"Escultura",
+        "modelo":"Escultura",
+        "imgBtn" : "EsculturaBtn",
+        "tipo": "terreno" 
+    }, {  
+        "nome":"Mesa",
+        "modelo":"Mesa",
+        "imgBtn" : "MesaBtn",
+        "tipo": "obj" 
+    }
+]
