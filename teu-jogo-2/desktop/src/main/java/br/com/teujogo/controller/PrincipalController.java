@@ -13,14 +13,25 @@ import br.com.teujogo.principal.JfxPrincipal;
 import br.com.teujogo.principal.JmePrincipal;
 import br.com.teujogo.util.GerenciadorArquivos;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 
 public class PrincipalController {
 
+	public static final String MENU_EDT_ELEMENTO_REGRA = "/areas/Telas.fxml";
+	
+	@FXML
+	public FlowPane pnlDireita;
+	
+	@FXML
+	public FlowPane pnlDireitaAdd;
+	
 	@FXML
 	public StackPane pnlJme;
 
@@ -135,6 +146,30 @@ public class PrincipalController {
 	private void montarFase(MouseEvent event) {
 		event.consume();
 		menuElementosController.showMenu(MenuElementosController.MENU_MONTAR_FASE);
+	}
+	
+	@FXML
+	public void telas(MouseEvent event) {
+		pnlDireita.setVisible(true);
+		showMenu(this.MENU_EDT_ELEMENTO_REGRA);
+	}
+	
+	@FXML
+	public void salvarTelas(MouseEvent event) {
+		pnlDireitaAdd.getChildren().removeAll(pnlDireita.getChildren());
+		pnlDireita.setVisible(false);
+	}
+	
+	public void showMenu(String menu) {
+
+		try {
+			pnlDireitaAdd.getChildren().removeAll(pnlDireitaAdd.getChildren());
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(menu));
+			Parent root = (Parent) fxmlLoader.load();
+			pnlDireitaAdd.getChildren().add(root);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

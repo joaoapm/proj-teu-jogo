@@ -31,13 +31,14 @@ public class JfxPrincipal {
 			roo2t = FXMLLoader.load(getClass().getClassLoader().getResource("areas/Principal.fxml"));
 
 			Scene scene = new Scene(roo2t, 1080, 720);
+			scene.getStylesheets().add(getClass().getResource("/areas/demo.css").toExternalForm());
 
 			primaryStage.setScene(scene);
 			primaryStage.show();
 
 			primaryStage.setTitle("Teu Jogo");
-	        TimeUnit.SECONDS.sleep(1);
-	        primaryStage.getScene().getRoot().resize(1080, 725);
+			TimeUnit.SECONDS.sleep(1);
+			primaryStage.getScene().getRoot().resize(1080, 725);
 			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				@Override
 				public void handle(WindowEvent t) {
