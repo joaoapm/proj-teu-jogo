@@ -80,12 +80,21 @@
 	</Pane>
       <FlowPane fx:id="pnlDireita" layoutX="278.0" prefHeight="720.0" prefWidth="805.0" style="-fx-background-color: #f99c84;" visible="false">
          <children>
-            <FlowPane alignment="TOP_RIGHT" hgap="5.0" prefHeight="46.0" prefWidth="803.0" vgap="5.0">
+            <FlowPane alignment="TOP_RIGHT" prefHeight="46.0" prefWidth="803.0" vgap="5.0">
                <children>
+                  <ComboBox fx:id="opcoesTela" prefWidth="150.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <FlowPane.margin>
+                        <Insets right="120.0" />
+                     </FlowPane.margin>
+                  </ComboBox>
          		 <Button fx:id="salvarTelas" mnemonicParsing="false" onMouseReleased="#salvarTelas" prefHeight="46.0" prefWidth="113.0" text="Salvar!" />
+                  <Button fx:id="fechar" layoutX="695.0" layoutY="15.0" mnemonicParsing="false" onMouseReleased="#fechar" prefHeight="46.0" prefWidth="113.0" text="Fechar" textAlignment="RIGHT" />
                </children>
                <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="5.0" left="50.0" right="5.0" top="5.0" />
                </padding>
             </FlowPane>
    	  
