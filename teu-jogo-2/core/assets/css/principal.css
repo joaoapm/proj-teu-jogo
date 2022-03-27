@@ -1,16 +1,16 @@
-.text-area {
+.text-area-trans {
     -fx-background-color: rgba(53,89,119,0.1);
 }
 
-.text-area .scroll-pane {
+.text-area-trans .scroll-pane {
     -fx-background-color: transparent;
 }
 
-.text-area .scroll-pane .viewport{
+.text-area-trans .scroll-pane .viewport{
     -fx-background-color: transparent;
 }
 
 
-.text-area .scroll-pane .content{
+.text-area-trans .scroll-pane .content{
     -fx-background-color: transparent;
 }

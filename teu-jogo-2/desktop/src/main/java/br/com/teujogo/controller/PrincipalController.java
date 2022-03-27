@@ -33,9 +33,9 @@ import javafx.stage.FileChooser;
 
 public class PrincipalController {
 
-	public static final String TELAS_INTRODUCAO = "/areas/TelasIntroducao.fxml";
-	public static final String TELAS_FIM = "/areas/TelaFim.fxml";
-	public static final String TELAS_TITULO = "/areas/TelasTitulo.fxml";
+	public static final String TELAS_INTRODUCAO = "/areas-sub/Telas/TelasIntroducao.fxml";
+	public static final String TELAS_FIM = "/areas-sub/Telas/TelaFim.fxml";
+	public static final String TELAS_TITULO = "/areas-sub/Telas/TelasTitulo.fxml";
 
 	@FXML
 	private ComboBox<Telas> opcoesTela;

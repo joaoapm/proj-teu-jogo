@@ -14,7 +14,7 @@ public class GerenciadorAssets {
 	public static List<Asset> lerAssets() {
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
-			return objectMapper.readValue(GerenciadorAssets.class.getClassLoader().getResource("assets.json"),
+			return objectMapper.readValue(GerenciadorAssets.class.getClassLoader().getResource("data/assets.json"),
 					objectMapper.getTypeFactory().constructCollectionType(List.class, Asset.class));
 		} catch (StreamReadException e) {
 			e.printStackTrace();

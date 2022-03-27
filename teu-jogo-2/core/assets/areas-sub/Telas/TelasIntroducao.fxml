@@ -7,7 +7,7 @@
 
 <VBox alignment="CENTER" prefHeight="720.0" prefWidth="805.0" spacing="50.0" style="-fx-background-color: #f99c84;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextArea fx:id="intro1" prefHeight="406.0" prefWidth="591.0" />
+      <TextArea styleClass="text-area-trans" fx:id="intro1" prefHeight="406.0" prefWidth="591.0" />
      
    </children>
    <padding>

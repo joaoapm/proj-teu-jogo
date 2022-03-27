@@ -21,13 +21,13 @@ public class MenuElementosController {
 
 	public static final DataFormat CLIPBOARD_DATAFORMAT = new DataFormat("nbt-editor-item-snip");
 
-	public static final String MENU_PERSONAGENS = "/telas/MenuElementos/MenuElementosAddPersonagens.fxml";
-	public static final String MENU_ELEMENTOS = "/telas/MenuElementos/MenuElementosAddElementos.fxml";
-	public static final String MENU_EDT_PERSONAGEM = "/telas/MenuElementos/MenuElementosEdtPersonagens.fxml";
-	public static final String MENU_MONTAR_FASE = "/telas/MenuElementos/MenuElementosMontarFase.fxml";
-	public static final String MENU_EDT_ELEMENTO_TEMPO = "/telas/MenuElementos/MenuElementosEdtElementoTempo.fxml";
-	public static final String MENU_EDT_ELEMENTO_ACAO = "/telas/MenuElementos/MenuElementosEdtElementoAcao.fxml";
-	public static final String MENU_EDT_ELEMENTO_REGRA = "/telas/MenuElementos/MenuElementosEdtRegra.fxml";
+	public static final String MENU_PERSONAGENS = "/areas-sub/MenuElementos/MenuElementosAddPersonagens.fxml";
+	public static final String MENU_ELEMENTOS = "/areas-sub/MenuElementos/MenuElementosAddElementos.fxml";
+	public static final String MENU_EDT_PERSONAGEM = "/areas-sub/MenuElementos/MenuElementosEdtPersonagens.fxml";
+	public static final String MENU_MONTAR_FASE = "/areas-sub/MenuElementos/MenuElementosMontarFase.fxml";
+	public static final String MENU_EDT_ELEMENTO_TEMPO = "/areas-sub/MenuElementos/MenuElementosEdtElementoTempo.fxml";
+	public static final String MENU_EDT_ELEMENTO_ACAO = "/areas-sub/MenuElementos/MenuElementosEdtElementoAcao.fxml";
+	public static final String MENU_EDT_ELEMENTO_REGRA = "/areas-sub/MenuElementos/MenuElementosEdtRegra.fxml";
 
 	@FXML
 	public Pane pnlElementos;

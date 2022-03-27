@@ -31,7 +31,7 @@ public class JfxPrincipal {
 			roo2t = FXMLLoader.load(getClass().getClassLoader().getResource("areas/Principal.fxml"));
 
 			Scene scene = new Scene(roo2t, 1080, 720);
-			scene.getStylesheets().add(getClass().getResource("/areas/demo.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("/css/principal.css").toExternalForm());
 
 			primaryStage.setScene(scene);
 			primaryStage.show();

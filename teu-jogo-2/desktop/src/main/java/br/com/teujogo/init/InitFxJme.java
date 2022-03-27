@@ -1,6 +1,5 @@
 package br.com.teujogo.init;
 
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 import com.jayfella.jfx.embedded.SimpleJfxApplication;

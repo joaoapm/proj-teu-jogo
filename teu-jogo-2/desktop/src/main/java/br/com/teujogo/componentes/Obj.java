@@ -1,6 +1,5 @@
 package br.com.teujogo.componentes;
 
-import java.io.File;
 import java.io.IOException;
 
 import br.com.teujogo.controller.MenuElementosController;
@@ -47,7 +46,7 @@ public class Obj extends FlowPane {
 	private void initialize() {
 		setDragDrop();
 
-		Image imProfile = new Image(getClass().getResourceAsStream("/modelos/imgs/"+imgC+".png"));
+		Image imProfile = new Image(getClass().getResourceAsStream("/img/btnAssets/"+imgC+".png"));
 		
 		img.setImage(imProfile);
 	}

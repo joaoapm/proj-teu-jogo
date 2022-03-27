@@ -6,7 +6,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="805.0" style="-fx-background-color: #f99c84;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextArea fx:id="titulo1" layoutX="34.0" layoutY="25.0" prefHeight="233.0" prefWidth="744.0" />
-      <TextArea fx:id="titulo2" layoutX="190.0" layoutY="277.0" prefHeight="83.0" prefWidth="432.0" />
+      <TextArea styleClass="text-area-trans"  fx:id="titulo1" layoutX="34.0" layoutY="25.0" prefHeight="233.0" prefWidth="744.0" />
+      <TextArea styleClass="text-area-trans"  fx:id="titulo2" layoutX="190.0" layoutY="277.0" prefHeight="83.0" prefWidth="432.0" />
    </children>
 </Pane>

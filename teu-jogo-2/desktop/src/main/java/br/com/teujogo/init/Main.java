@@ -16,9 +16,7 @@ public class Main {
 
 		System.setProperty(LWJGLBufferAllocator.PROPERTY_CONCURRENT_BUFFER_ALLOCATOR, "true");
 
-
 		Application.launch(InitFxJme.class, args);
-		
 
 	}
 
