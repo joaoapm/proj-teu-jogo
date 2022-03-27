@@ -12,15 +12,16 @@
   
       <GridPane prefHeight="150.0" prefWidth="130.0" style="-fx-background-color: #b5736e;">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="98.0" valignment="CENTER" vgrow="ALWAYS" />
-          <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="99.0" valignment="TOP" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="99.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label fx:id="lblPerso" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="200.0" textAlignment="RIGHT" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" prefHeight="91.0" prefWidth="99.0" text="Button" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="removerPer" mnemonicParsing="false" onMouseReleased="#removerPer" text="Remover" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="197.0" prefWidth="320.0" style="-fx-background-color: #9edec2;" vgap="5.0">

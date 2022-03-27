@@ -10,6 +10,7 @@ import com.jme3.math.Vector2f;
 
 import br.com.teujogo.componentes.DragCard;
 import br.com.teujogo.componentes.Obj;
+import br.com.teujogo.ed.Elemento;
 import br.com.teujogo.ed.TelaED;
 import br.com.teujogo.ed.Telas;
 import br.com.teujogo.principal.JfxPrincipal;
@@ -94,7 +95,9 @@ public class PrincipalController {
 			ptDrop = new Vector2f(Float.valueOf(String.valueOf(mouseEvent.getSceneX())).floatValue(),
 					Float.valueOf(String.valueOf(mouseEvent.getSceneY())).floatValue());
 
-			menuElementosController.edtPersonagem(app.selectiona());
+			Elemento e = app.selectiona();
+			if(e != null)
+				menuElementosController.edtPersonagem(e);
 
 			app.enqueue(() -> {
 				app.gizRemove();
@@ -136,6 +139,13 @@ public class PrincipalController {
 	}
 
 	@FXML
+	private void montarFase(MouseEvent event) {
+		fechar(null);
+		event.consume();
+		menuElementosController.showMenu(MenuElementosController.MENU_MONTAR_FASE);
+	}
+
+	@FXML
 	public void salvar(MouseEvent event) {
 		JmePrincipal app = (JmePrincipal) JfxPrincipal.jfxApp.get();
 		FileChooser fileChooser = new FileChooser();
@@ -162,13 +172,6 @@ public class PrincipalController {
 				new GerenciadorArquivos().exporta(new TelaED(app, file));
 			});
 		}
-	}
-
-	@FXML
-	private void montarFase(MouseEvent event) {
-		fechar(null);
-		event.consume();
-		menuElementosController.showMenu(MenuElementosController.MENU_MONTAR_FASE);
 	}
 
 	private void initComboEdtTelas() {

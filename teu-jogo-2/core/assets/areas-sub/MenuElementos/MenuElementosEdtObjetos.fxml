@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import br.com.teujogo.componentes.*?>
+
+<HBox alignment="TOP_RIGHT" prefHeight="183.0" prefWidth="802.0" style="-fx-background-color: #f299bb;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.teujogo.controller.MenuElementosEdtObjController">
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <children>
+      <Button fx:id="remove" alignment="CENTER" mnemonicParsing="false" onMouseReleased="#removerObj" text="Remover" />
+   </children> 
+</HBox>

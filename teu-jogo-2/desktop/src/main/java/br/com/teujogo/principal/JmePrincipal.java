@@ -29,7 +29,6 @@ public class JmePrincipal extends SimpleJfxApplication {
 	public Carregador c;
 	public Node shootables;
 	public Node elementos;
-	public Node elementosAsset;
 	public Node elementosAlt;
 	private Gizmo gizmo = new Gizmo();
 	private DirectionalLight luz;
@@ -58,7 +57,6 @@ public class JmePrincipal extends SimpleJfxApplication {
 		c.iniciaViewPort(this);
 		luz = c.inciaLuz(this);
 
-		elementosAsset  = new Node("ElementosAsset");
 		shootables = new Node("Shootables");
 		elementos = new Node("Elementos");
 		elementosAlt = new Node("ElementosAlt");
@@ -66,12 +64,19 @@ public class JmePrincipal extends SimpleJfxApplication {
 		rootNode.attachChild(shootables);
 		rootNode.attachChild(elementos);
 		rootNode.attachChild(elementosAlt);
-		rootNode.attachChild(elementosAsset);
 
 		shootables.attachChild(c.plano);
 
 	}
 
+	public void removeObj(Elemento e) {
+		
+		rootNode.detachChild(e.getGeometry());
+		elementos.detachChild(e.getGeometry());
+		e.removeFromParent();
+		gizmo.removeGizmo();
+	}
+	
 	public void addObj(Asset asset) {
 
 		CollisionResults results = new CollisionResults();
