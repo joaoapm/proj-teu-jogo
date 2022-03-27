@@ -2,7 +2,8 @@ package br.com.teujogo.enumeration;
 
 public enum TipoElemento {
 
-	HUMANOIDE(1, "Humanóide", "H"), VEICULO(2, "Veículo", "V"), ACAO(3, "Ação", "A"), TEMPO(4, "Tempo", "T");
+	HUMANOIDE(1, "Humanóide", "H"), VEICULO(2, "Veículo", "V"), ACAO(3, "Ação", "A"), TEMPO(4, "Tempo", "T"),
+	ASSET(4, "Asset", "AT");
 
 	private int valor;
 	private String descricao;

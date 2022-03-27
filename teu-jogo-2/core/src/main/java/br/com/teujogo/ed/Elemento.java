@@ -25,6 +25,7 @@ public class Elemento extends Spatial {
 		this.tipoElemento = tipoElemento2;
 	}
 
+	
 	public Elemento() {
 		super();
 	}

@@ -29,6 +29,7 @@ public class JmePrincipal extends SimpleJfxApplication {
 	public Carregador c;
 	public Node shootables;
 	public Node elementos;
+	public Node elementosAsset;
 	public Node elementosAlt;
 	private Gizmo gizmo = new Gizmo();
 	private DirectionalLight luz;
@@ -57,6 +58,7 @@ public class JmePrincipal extends SimpleJfxApplication {
 		c.iniciaViewPort(this);
 		luz = c.inciaLuz(this);
 
+		elementosAsset  = new Node("ElementosAsset");
 		shootables = new Node("Shootables");
 		elementos = new Node("Elementos");
 		elementosAlt = new Node("ElementosAlt");
@@ -64,6 +66,7 @@ public class JmePrincipal extends SimpleJfxApplication {
 		rootNode.attachChild(shootables);
 		rootNode.attachChild(elementos);
 		rootNode.attachChild(elementosAlt);
+		rootNode.attachChild(elementosAsset);
 
 		shootables.attachChild(c.plano);
 
@@ -84,12 +87,11 @@ public class JmePrincipal extends SimpleJfxApplication {
 		if (results.size() > 0) {
 			CollisionResult closest = results.getClosestCollision();
 			Vector3f pt = closest.getContactPoint();
-
-			Spatial model = assetManager.loadModel("modelos/" + asset.getNome() + ".obj");
-			model.setLocalTranslation(pt);
-			rootNode.attachChild(model);
+			Geometry geom = (Geometry) assetManager.loadModel("modelos/" + asset.getNome() + ".obj");
+			getRootNode().attachChild(geom);
+			geom.setLocalTranslation(pt);
+			elementos.attachChild(new Elemento(geom, TipoElemento.ASSET));
 		}
-
 	}
 
 	public long getid() {

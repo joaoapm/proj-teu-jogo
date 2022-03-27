@@ -58,7 +58,7 @@ public class MenuElementosController {
 		});
 		PrincipalController.pnlElementosAddRef.getChildren().add(b);
 	}
-	
+
 	public void removeElemento(ElementoJogo e) {
 		PrincipalController.pnlElementosAddRef.getChildren().remove(e);
 	}
@@ -84,15 +84,16 @@ public class MenuElementosController {
 		try {
 			if (elemento != null)
 				this.elemento = elemento;
-			if (this.elemento != null) {
-
+			if (this.elemento != null && this.elemento.getTipoElemento() != null
+					&& this.elemento.getTipoElemento() != TipoElemento.ASSET) {
 				pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MENU_EDT_PERSONAGEM));
 				Parent root = (Parent) fxmlLoader.load();
-				MenuElementosEdtPersonagemController controller = fxmlLoader
-						.<MenuElementosEdtPersonagemController>getController();
+				MenuElementosEdtPersonagemController controller = fxmlLoader.<MenuElementosEdtPersonagemController>getController();
 				pnlElementos.getChildren().add(root);
 				controller.atualiza(this.elemento);
+			} else {
+				pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
