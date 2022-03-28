@@ -13,21 +13,35 @@ import com.jme3.scene.SceneGraphVisitor;
 import com.jme3.scene.Spatial;
 
 import br.com.teujogo.enumeration.TipoElemento;
+import javafx.scene.paint.Color;
 
 public class Elemento extends Spatial {
 
 	private TipoElemento tipoElemento;
 	private Geometry geometry;
+
 	private List<Regra> regras = new ArrayList<Regra>();
+
+	private boolean isInimigo;
+	private boolean podeAtacar;
+	private Integer dano;
+	private boolean podePular;
+	private boolean possuiVidas;
+	private Integer qntVidas;
+	private Color cor;
+	private String asset;
 
 	public Elemento(Geometry geom, TipoElemento tipoElemento2) {
 		this.geometry = geom;
 		this.tipoElemento = tipoElemento2;
 	}
 
-	
 	public Elemento() {
 		super();
+	}
+
+	public Integer getQntVidas() {
+		return qntVidas;
 	}
 
 	public Geometry getGeometry() {
@@ -52,6 +66,66 @@ public class Elemento extends Spatial {
 
 	public void setRegras(List<Regra> regras) {
 		this.regras = regras;
+	}
+
+	public boolean isInimigo() {
+		return isInimigo;
+	}
+
+	public void setInimigo(boolean isInimigo) {
+		this.isInimigo = isInimigo;
+	}
+
+	public boolean isPodeAtacar() {
+		return podeAtacar;
+	}
+
+	public void setPodeAtacar(boolean podeAtacar) {
+		this.podeAtacar = podeAtacar;
+	}
+
+	public Integer getDano() {
+		return dano;
+	}
+
+	public void setDano(Integer dano) {
+		this.dano = dano;
+	}
+
+	public void setQntVidas(Integer qntVidas) {
+		this.qntVidas = qntVidas;
+	}
+
+	public boolean isPodePular() {
+		return podePular;
+	}
+
+	public void setPodePular(boolean podePular) {
+		this.podePular = podePular;
+	}
+
+	public boolean isPossuiVidas() {
+		return possuiVidas;
+	}
+
+	public void setPossuiVidas(boolean possuiVidas) {
+		this.possuiVidas = possuiVidas;
+	}
+
+	public Color getCor() {
+		return cor;
+	}
+
+	public void setCor(Color cor) {
+		this.cor = cor;
+	}
+
+	public String getAsset() {
+		return asset;
+	}
+
+	public void setAsset(String asset) {
+		this.asset = asset;
 	}
 
 	@Override

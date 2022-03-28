@@ -19,6 +19,7 @@ public class Editor extends HBox {
 
 	private ObjectProperty<EventHandler<MouseEvent>> propertyOnFechar = new SimpleObjectProperty<EventHandler<MouseEvent>>();
 	private ObjectProperty<EventHandler<MouseEvent>> propertyOnRemover = new SimpleObjectProperty<EventHandler<MouseEvent>>();
+	private ObjectProperty<EventHandler<MouseEvent>> propertyOnAlterar = new SimpleObjectProperty<EventHandler<MouseEvent>>();
 
 	@FXML
 	private FlowPane snippets;
@@ -28,6 +29,10 @@ public class Editor extends HBox {
 
 	@FXML
 	private Button btnRemover;
+
+	public void setRegra(String regra) {
+		areaTexto.setText(regra);
+	}
 
 	public Editor() {
 		FXMLLoader fxmlloader = new FXMLLoader(getClass().getClassLoader().getResource("componentes/Editor.fxml"));
@@ -66,6 +71,14 @@ public class Editor extends HBox {
 			snippets.getChildren().add(sp);
 		}
 
+		areaTexto.textProperty().addListener((observable, oldValue, newValue) -> {
+			onAlterarProperty().get().handle(null);
+		});
+
+	}
+
+	public String getValue() {
+		return areaTexto.getText();
 	}
 
 	private void aoAdicionarSnippet(EditorSnippet es) {
@@ -106,4 +119,15 @@ public class Editor extends HBox {
 		propertyOnRemover.get().handle(event);
 	}
 
+	public final ObjectProperty<EventHandler<MouseEvent>> onAlterarProperty() {
+		return propertyOnAlterar;
+	}
+
+	public final void setOnAlterar(EventHandler<MouseEvent> handler) {
+		propertyOnAlterar.set(handler);
+	}
+
+	public final EventHandler<MouseEvent> getOnAlterar() {
+		return propertyOnAlterar.get();
+	}
 }

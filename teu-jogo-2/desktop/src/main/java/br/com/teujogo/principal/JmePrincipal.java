@@ -209,6 +209,10 @@ public class JmePrincipal extends SimpleJfxApplication {
 	public void gizRemove() {
 		gizmo.resetGizmo();
 	}
+	
+	public void gizDelete() {
+		gizmo.removeGizmo();
+	}
 
 	public void moveCamE() {
 		Camera cam = c.cam;

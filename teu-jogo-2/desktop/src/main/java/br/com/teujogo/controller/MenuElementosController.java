@@ -29,6 +29,7 @@ public class MenuElementosController {
 	public static final String MENU_EDT_ELEMENTO_ACAO = "/areas-sub/MenuElementos/MenuElementosEdtElementoAcao.fxml";
 	public static final String MENU_EDT_ELEMENTO_REGRA = "/areas-sub/MenuElementos/MenuElementosEdtRegra.fxml";
 	public static final String MENU_EDT_OBJ = "/areas-sub/MenuElementos/MenuElementosEdtObjetos.fxml";
+	public static final String MENU_EDT_PERSONAGEM_REGRA = "/areas-sub/MenuElementos/MenuElementosEdtPersonRegr.fxml";
 
 	@FXML
 	public Pane pnlElementos;
@@ -90,14 +91,16 @@ public class MenuElementosController {
 					pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
 					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MENU_EDT_PERSONAGEM));
 					Parent root = (Parent) fxmlLoader.load();
-					MenuElementosEdtPersonagemController controller = fxmlLoader.<MenuElementosEdtPersonagemController>getController();
+					MenuElementosEdtPersonagemController controller = fxmlLoader
+							.<MenuElementosEdtPersonagemController>getController();
 					pnlElementos.getChildren().add(root);
 					controller.atualiza(this.elemento);
 				} else {
 					pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
 					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MENU_EDT_OBJ));
 					Parent root = (Parent) fxmlLoader.load();
-					MenuElementosEdtObjController controller = fxmlLoader.<MenuElementosEdtObjController>getController();
+					MenuElementosEdtObjController controller = fxmlLoader
+							.<MenuElementosEdtObjController>getController();
 					pnlElementos.getChildren().add(root);
 					controller.atualiza(this.elemento);
 				}
@@ -122,9 +125,10 @@ public class MenuElementosController {
 			}
 
 			pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MENU_EDT_ELEMENTO_REGRA));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MENU_EDT_PERSONAGEM_REGRA));
 			Parent root = (Parent) fxmlLoader.load();
-			MenuElementosEdtRegraController controller = fxmlLoader.<MenuElementosEdtRegraController>getController();
+			MenuElementosEdtPersonRegraController controller = fxmlLoader
+					.<MenuElementosEdtPersonRegraController>getController();
 			pnlElementos.getChildren().add(root);
 			controller.atualiza(r);
 		} catch (IOException e) {
@@ -136,15 +140,6 @@ public class MenuElementosController {
 	public void remRegra(Regra regra) {
 		this.elemento.getRegras().remove(regra);
 		edtPersonagem(null);
-	}
-
-	private void carregaEdtElementoObj(String menu, ElementoJogo ele) throws IOException {
-		pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(menu));
-		Parent root = (Parent) fxmlLoader.load();
-		EdtElemento controller = fxmlLoader.<EdtElemento>getController();
-		pnlElementos.getChildren().add(root);
-		controller.atualiza(ele);
 	}
 
 	public void showMenu(String menu) {
@@ -162,4 +157,14 @@ public class MenuElementosController {
 	public void reset() {
 		pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
 	}
+
+	private void carregaEdtElementoObj(String menu, ElementoJogo ele) throws IOException {
+		pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(menu));
+		Parent root = (Parent) fxmlLoader.load();
+		EdtElemento controller = fxmlLoader.<EdtElemento>getController();
+		pnlElementos.getChildren().add(root);
+		controller.atualiza(ele);
+	}
+
 }

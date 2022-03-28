@@ -61,6 +61,8 @@ public class PrincipalController {
 	public static Vector2f ptDrop;
 
 	private List<Telas> infTelas = new ArrayList<Telas>();
+	
+	JmePrincipal p = (JmePrincipal) JfxPrincipal.jfxApp.get();
 
 	public PrincipalController() {
 		super();
@@ -68,13 +70,11 @@ public class PrincipalController {
 
 	@FXML
 	private void initialize() {
-
 		initCanvas();
 		initComboEdtTelas();
 
 		pnlElementosAddRef = pnlElementosAdd;
 		menuElementosControllerRef = menuElementosController;
-
 	}
 
 	private void initCanvas() {
@@ -129,6 +129,9 @@ public class PrincipalController {
 		fechar(null);
 		event.consume();
 		menuElementosController.showMenu(MenuElementosController.MENU_PERSONAGENS);
+		p.enqueue(()->{
+			p.gizDelete();
+		});
 	}
 
 	@FXML
@@ -136,13 +139,20 @@ public class PrincipalController {
 		fechar(null);
 		event.consume();
 		menuElementosController.showMenu(MenuElementosController.MENU_ELEMENTOS);
+		p.enqueue(()->{
+			p.gizDelete();
+		});
 	}
 
 	@FXML
 	private void montarFase(MouseEvent event) {
+		p.enqueue(()->{
+			p.gizDelete();
+		});
 		fechar(null);
 		event.consume();
 		menuElementosController.showMenu(MenuElementosController.MENU_MONTAR_FASE);
+
 	}
 
 	@FXML
