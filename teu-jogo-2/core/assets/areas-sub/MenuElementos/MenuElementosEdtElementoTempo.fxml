@@ -20,7 +20,7 @@
       <HBox alignment="BOTTOM_LEFT" prefHeight="31.0" prefWidth="319.0" spacing="10.0">
          <children>
             <Label prefHeight="25.0" prefWidth="83.0" text="Tempo" textAlignment="RIGHT" />
-            <TextField prefHeight="25.0" prefWidth="51.0">
+            <TextField fx:id="tempo" prefHeight="25.0" prefWidth="51.0">
                <padding>
                   <Insets left="20.0" />
                </padding>
@@ -30,24 +30,24 @@
       <HBox alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="15.0" prefHeight="31.0" prefWidth="319.0" spacing="10.0">
          <children>
             <Label contentDisplay="CENTER" prefHeight="25.0" prefWidth="81.0" text="Tipo" />
-            <ComboBox prefHeight="25.0" prefWidth="129.0" />
+            <ComboBox fx:id="tipo" prefHeight="25.0" prefWidth="129.0" />
          </children>
       </HBox>
       <HBox alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="46.0" prefHeight="31.0" prefWidth="319.0" spacing="10.0">
          <children>
             <Label contentDisplay="CENTER" prefHeight="25.0" prefWidth="81.0" text="Ao Terminar" />
-            <ComboBox prefHeight="25.0" prefWidth="129.0" />
+            <ComboBox fx:id="aoTerminar" prefHeight="25.0" prefWidth="129.0" />
          </children>
       </HBox>
       <HBox alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="77.0" prefHeight="31.0" prefWidth="319.0" spacing="10.0">
          <children>
             <Label contentDisplay="CENTER" prefHeight="25.0" prefWidth="81.0" text="A cada" />
-            <TextField prefHeight="25.0" prefWidth="51.0">
+            <TextField fx:id="aCada" prefHeight="25.0" prefWidth="51.0">
                <padding>
                   <Insets left="20.0" />
                </padding>
             </TextField>
-            <ComboBox prefHeight="25.0" prefWidth="129.0" />
+            <ComboBox fx:id="aCadaAcao" prefHeight="25.0" prefWidth="129.0" />
          </children>
       </HBox>
    </children> 
