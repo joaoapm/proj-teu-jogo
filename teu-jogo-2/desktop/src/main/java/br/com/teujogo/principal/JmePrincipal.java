@@ -16,6 +16,7 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
+import com.jme3.util.SkyFactory;
 
 import br.com.teujogo.Carregador;
 import br.com.teujogo.controller.PrincipalController;
@@ -66,6 +67,8 @@ public class JmePrincipal extends SimpleJfxApplication {
 		rootNode.attachChild(elementosAlt);
 
 		shootables.attachChild(c.plano);
+		
+		getRootNode().attachChild(SkyFactory.createSky(getAssetManager(), "/img/BrightSky.dds", SkyFactory.EnvMapType.CubeMap));
 
 	}
 
