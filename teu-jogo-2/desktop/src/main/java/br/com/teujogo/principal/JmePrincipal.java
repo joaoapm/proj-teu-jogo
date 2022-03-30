@@ -68,7 +68,7 @@ public class JmePrincipal extends SimpleJfxApplication {
 
 		shootables.attachChild(c.plano);
 		
-		getRootNode().attachChild(SkyFactory.createSky(getAssetManager(), "/img/BrightSky.dds", SkyFactory.EnvMapType.CubeMap));
+		//getRootNode().attachChild(SkyFactory.createSky(getAssetManager(), "/img/BrightSky.dds", SkyFactory.EnvMapType.CubeMap));
 
 	}
 
