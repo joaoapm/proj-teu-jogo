@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import com.jme3.app.SimpleApplication;
 import com.jme3.light.DirectionalLight;
+import com.jme3.light.Light;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
@@ -91,6 +92,8 @@ public class Carregador extends SimpleApplication {
 		DirectionalLight sun = new DirectionalLight();
 		sun.setDirection(new Vector3f(0.5f, -1, -0.5f).normalizeLocal());
 		sun.setColor(new ColorRGBA(ColorRGBA.White));
+		for (Light l : simpleApplication.getRootNode().getLocalLightList())
+			simpleApplication.getRootNode().removeLight(l);
 		simpleApplication.getRootNode().addLight(sun);
 		return sun;
 	}

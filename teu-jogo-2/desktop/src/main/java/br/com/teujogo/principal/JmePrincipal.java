@@ -80,6 +80,25 @@ public class JmePrincipal extends SimpleJfxApplication {
 		gizmo.removeGizmo();
 	}
 	
+	public void removeTudo() {
+		for (Spatial s : rootNode.getChildren()) {
+			s.removeFromParent();
+		}
+		c.iniciaPlano(this);
+		c.iniciaViewPort(this);
+		luz = c.inciaLuz(this);
+
+		shootables = new Node("Shootables");
+		elementos = new Node("Elementos");
+		elementosAlt = new Node("ElementosAlt");
+
+		rootNode.attachChild(shootables);
+		rootNode.attachChild(elementos);
+		rootNode.attachChild(elementosAlt);
+
+		shootables.attachChild(c.plano);
+	}
+		
 	public void addObj(Asset asset) {
 
 		CollisionResults results = new CollisionResults();

@@ -28,7 +28,7 @@
             </TextField>
             <FlowPane fx:id="pnlBotoes" alignment="CENTER" hgap="20.0" prefHeight="473.0" prefWidth="248.0" vgap="20.0">
                <children>
-                  <Button fx:id="btnNovoJogo" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Novo Jogo">
+                  <Button fx:id="btnNovoJogo" onMouseReleased="#novo" mnemonicParsing="false" prefHeight="126.0" prefWidth="105.0" text="Novo Jogo">
                      <FlowPane.margin>
                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                      </FlowPane.margin>

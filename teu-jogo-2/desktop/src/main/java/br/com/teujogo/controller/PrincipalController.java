@@ -22,9 +22,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.FlowPane;
@@ -58,6 +63,9 @@ public class PrincipalController {
 	private MenuElementosController menuElementosController;
 	public static MenuElementosController menuElementosControllerRef;
 
+	@FXML
+	private TextField txtNomeProjeto;
+	
 	public static Vector2f ptDrop;
 
 	private List<Telas> infTelas = new ArrayList<Telas>();
@@ -123,6 +131,24 @@ public class PrincipalController {
 		});
 
 	}
+	
+	@FXML
+	public void novo(MouseEvent event) {
+		Alert alert = new Alert(AlertType.CONFIRMATION, "Deseja iniciar um novo jogo?", ButtonType.YES,
+				ButtonType.CANCEL);
+		alert.showAndWait();
+
+		if (alert.getResult() == ButtonType.YES) {
+			txtNomeProjeto.setText("");
+			p.enqueue(() -> {
+				p.removeTudo();
+			});
+			for (int i = 0; i < pnlElementosAdd.getChildren().size(); i++)
+				PrincipalController.pnlElementosAddRef.getChildren().remove(i);
+			menuElementosController.reset();
+		}
+
+	}
 
 	@FXML
 	private void addPersonagem(MouseEvent event) {
@@ -186,8 +212,8 @@ public class PrincipalController {
 
 	private void initComboEdtTelas() {
 
-		infTelas.add(new Telas(0, "Tela de Introdução"));
-		infTelas.add(new Telas(1, "Tela de Título"));
+		infTelas.add(new Telas(0, "Tela de Introduï¿½ï¿½o"));
+		infTelas.add(new Telas(1, "Tela de Tï¿½tulo"));
 		infTelas.add(new Telas(2, "Tela Final"));
 
 		ObservableList<Telas> telas = FXCollections.observableArrayList();
