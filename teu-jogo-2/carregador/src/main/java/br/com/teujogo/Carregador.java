@@ -9,6 +9,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.jme3.app.SimpleApplication;
+import com.jme3.bullet.BulletAppState;
+import com.jme3.bullet.collision.shapes.BoxCollisionShape;
+import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.light.DirectionalLight;
 import com.jme3.light.Light;
 import com.jme3.material.Material;
@@ -17,11 +20,14 @@ import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.renderer.ViewPort;
 import com.jme3.scene.Geometry;
+import com.jme3.scene.Node;
 import com.jme3.scene.shape.Box;
 import com.jme3.system.AppSettings;
 
 public class Carregador extends SimpleApplication {
 
+	private BulletAppState bulletAppState;
+	public Node staticos;
 	public Camera cam;
 	public Geometry plano;
 	private Vector3f camIni = new Vector3f(0, 5.1f, 40);
@@ -31,13 +37,18 @@ public class Carregador extends SimpleApplication {
 	public void simpleInitApp() {
 		getFlyByCamera().setEnabled(false);
 
+		bulletAppState = new BulletAppState();
+		stateManager.attach(bulletAppState);
+
 		cam = this.getCamera().clone();
 		cam.setLocation(camIni);
 
-		iniciaViewPort(this);
+		staticos = new Node("Staticos");
+		rootNode.attachChild(staticos);
 
+		iniciaViewPort(this);
 		inciaLuz(this);
-		iniciaPlano(this);
+		iniciaPlano(staticos, this);
 
 		try {
 			processArquivo();
@@ -46,6 +57,7 @@ public class Carregador extends SimpleApplication {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -60,7 +72,7 @@ public class Carregador extends SimpleApplication {
 
 	public void inicia(SimpleApplication simpleApplication) {
 
-		cam =  simpleApplication.getCamera().clone();
+		cam = simpleApplication.getCamera().clone();
 		cam.setViewPort(0.250f, 1f, 0.250f, 1f);
 		cam.setLocation(camIni);
 
@@ -75,17 +87,27 @@ public class Carregador extends SimpleApplication {
 		view2.setBackgroundColor(new ColorRGBA(127f / 255f, 168f / 255f, 235f / 255f, 100f));
 	}
 
-	public void iniciaPlano(SimpleApplication ap) {
-		Box b = new Box(50, 0.1f, 15);
+	public void iniciaPlano(Node ap, SimpleApplication sp) {
+
+		Vector3f plano = new Vector3f(50, 0.1f, 15);
+
+		Box b = new Box(plano.x, plano.y, plano.z);
 		Geometry geom = new Geometry("Box", b);
-		Material mat = new Material(ap.getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
+		Material mat = new Material(sp.getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
 		mat.setBoolean("UseMaterialColors", true);
-		mat.setColor("Diffuse", ColorRGBA.LightGray);
-		mat.setColor("Ambient", ColorRGBA.LightGray);
+		mat.setColor("Diffuse", ColorRGBA.Gray);
+		mat.setColor("Ambient", ColorRGBA.Gray);
 		geom.setMaterial(mat);
-		ap.getRootNode().attachChild(geom);
-		geom.setLocalTranslation(new Vector3f(0, -0.2f, 0));
-		plano = geom;
+
+		BoxCollisionShape capsule = new BoxCollisionShape(plano);
+		RigidBodyControl character = new RigidBodyControl(capsule, 1.01f);
+		geom.addControl(character);
+		character.setKinematic(true);
+		ap.attachChild(geom);
+		sp.getStateManager().getState(BulletAppState.class).getPhysicsSpace().add(character);
+
+		geom.setLocalTranslation(new Vector3f(8, -3.8f, 0));
+
 	}
 
 	public DirectionalLight inciaLuz(SimpleApplication simpleApplication) {

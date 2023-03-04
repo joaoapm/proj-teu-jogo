@@ -2,6 +2,10 @@ package br.com.teujogo.principal;
 
 import com.jayfella.jfx.embedded.SimpleJfxApplication;
 import com.jme3.app.state.AppState;
+import com.jme3.bullet.BulletAppState;
+import com.jme3.bullet.collision.shapes.BoxCollisionShape;
+import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
+import com.jme3.bullet.control.CharacterControl;
 import com.jme3.collision.CollisionResult;
 import com.jme3.collision.CollisionResults;
 import com.jme3.light.DirectionalLight;
@@ -16,7 +20,6 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
-import com.jme3.util.SkyFactory;
 
 import br.com.teujogo.Carregador;
 import br.com.teujogo.controller.PrincipalController;
@@ -27,6 +30,7 @@ import br.com.teujogo.util.Gizmo;
 
 public class JmePrincipal extends SimpleJfxApplication {
 
+	private BulletAppState bulletAppState;
 	public Carregador c;
 	public Node shootables;
 	public Node elementos;
@@ -54,7 +58,6 @@ public class JmePrincipal extends SimpleJfxApplication {
 		c = new Carregador();
 
 		c.inicia(this);
-		c.iniciaPlano(this);
 		c.iniciaViewPort(this);
 		luz = c.inciaLuz(this);
 
@@ -66,8 +69,11 @@ public class JmePrincipal extends SimpleJfxApplication {
 		rootNode.attachChild(elementos);
 		rootNode.attachChild(elementosAlt);
 
-		shootables.attachChild(c.plano);
+		bulletAppState = new BulletAppState();
+		bulletAppState.setDebugEnabled(false);
+		stateManager.attach(bulletAppState);
 		
+		c.iniciaPlano(shootables, this);
 		//getRootNode().attachChild(SkyFactory.createSky(getAssetManager(), "/img/BrightSky.dds", SkyFactory.EnvMapType.CubeMap));
 
 	}
@@ -84,7 +90,6 @@ public class JmePrincipal extends SimpleJfxApplication {
 		for (Spatial s : rootNode.getChildren()) {
 			s.removeFromParent();
 		}
-		c.iniciaPlano(this);
 		c.iniciaViewPort(this);
 		luz = c.inciaLuz(this);
 
@@ -96,7 +101,9 @@ public class JmePrincipal extends SimpleJfxApplication {
 		rootNode.attachChild(elementos);
 		rootNode.attachChild(elementosAlt);
 
-		shootables.attachChild(c.plano);
+		c.iniciaPlano(shootables, this);
+		
+		
 	}
 		
 	public void addObj(Asset asset) {
@@ -143,6 +150,7 @@ public class JmePrincipal extends SimpleJfxApplication {
 
 			float dist = closest.getDistance();
 			Vector3f pt = closest.getContactPoint();
+			pt.y += 5;
 			String hit = closest.getGeometry().getName();
 
 			System.out.println("Colisao[" + hit + " at " + pt + ", " + dist + "]");
@@ -156,9 +164,17 @@ public class JmePrincipal extends SimpleJfxApplication {
 				mat.setColor("Diffuse", ColorRGBA.Magenta);
 				mat.setColor("Ambient", ColorRGBA.Magenta);
 				geom.setMaterial(mat);
-				getRootNode().attachChild(geom);
 				geom.setLocalTranslation(pt);
-				elementos.attachChild(new Elemento(geom, tipo));
+
+				BoxCollisionShape capsule = new BoxCollisionShape(new Vector3f(3,3,3));
+				CharacterControl character = new CharacterControl(capsule, 1.01f);
+		        geom.addControl(character);
+		        character.setGravity(Vector3f.ZERO);
+		        
+		        rootNode.attachChild(geom);
+		        bulletAppState.getPhysicsSpace().add(character);
+		        
+		        elementos.attachChild(new Elemento(geom, tipo));
 
 			} else if (tipo.equals(TipoElemento.VEICULO)) {
 
