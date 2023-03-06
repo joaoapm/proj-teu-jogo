@@ -1,6 +1,7 @@
 package br.com.teujogo.principal;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -33,6 +34,8 @@ public class JfxPrincipal {
 			Scene scene = new Scene(roo2t, 1080, 720);
 			scene.getStylesheets().add(getClass().getResource("/css/principal.css").toExternalForm());
 
+		    scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+		    
 			primaryStage.setScene(scene);
 			primaryStage.show();
 

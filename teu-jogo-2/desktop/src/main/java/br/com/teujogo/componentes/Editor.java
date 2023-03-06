@@ -1,6 +1,14 @@
 package br.com.teujogo.componentes;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.fxmisc.richtext.CodeArea;
+import org.fxmisc.richtext.model.StyleSpans;
+import org.fxmisc.richtext.model.StyleSpansBuilder;
 
 import br.com.teujogo.enumeration.TipoSnippet;
 import javafx.beans.property.ObjectProperty;
@@ -9,7 +17,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.FlowPane;
@@ -21,17 +28,27 @@ public class Editor extends HBox {
 	private ObjectProperty<EventHandler<MouseEvent>> propertyOnRemover = new SimpleObjectProperty<EventHandler<MouseEvent>>();
 	private ObjectProperty<EventHandler<MouseEvent>> propertyOnAlterar = new SimpleObjectProperty<EventHandler<MouseEvent>>();
 
+	private static final String COMMENT_PATTERN = "//[^\n]*|/\\*(.|\\R)*?\\*/|/\\\\*[^\\\\v]*|^\\\\h*\\\\*([^\\\\v]*|/)";
+	private static final String[] KEYWORDS = new String[] { "F", "m", "g", "G", "a" };
+	private static final String KEYWORD_PATTERN = "\\b(" + String.join("|", KEYWORDS) + ")\\b";
+	private static final String SEMICOLON_PATTERN = "\\*";
+
+	private static final Pattern PATTERN = Pattern.compile("(?<KEYWORD>" 
+											+ KEYWORD_PATTERN + ")" + "|(?<SEMICOLON>"
+											+ SEMICOLON_PATTERN + ")" + "|(?<COMMENT>" 
+											+ COMMENT_PATTERN + ")");
+
 	@FXML
 	private FlowPane snippets;
 
 	@FXML
-	private TextArea areaTexto;
+	private CodeArea areaTexto;
 
 	@FXML
 	private Button btnRemover;
 
 	public void setRegra(String regra) {
-		areaTexto.setText(regra);
+		// areaTexto.setText(regra);
 	}
 
 	public Editor() {
@@ -49,6 +66,8 @@ public class Editor extends HBox {
 
 	@FXML
 	private void initialize() {
+		areaTexto.setStyle("-fx-font-family: consolas; -fx-font-size: 14pt;");
+
 		areaTexto.setOnDragOver(mouseEvent -> {
 			if (mouseEvent.getGestureSource().getClass() == EditorSnippet.class) {
 				mouseEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
@@ -72,9 +91,27 @@ public class Editor extends HBox {
 		}
 
 		areaTexto.textProperty().addListener((observable, oldValue, newValue) -> {
+			areaTexto.setStyleSpans(0, computeHighlighting(areaTexto.getText()));
 			onAlterarProperty().get().handle(null);
 		});
 
+	}
+
+	private StyleSpans<Collection<String>> computeHighlighting(String text) {
+		Matcher matcher = PATTERN.matcher(text);
+		int lastKwEnd = 0;
+		StyleSpansBuilder<Collection<String>> spansBuilder = new StyleSpansBuilder<>();
+		while (matcher.find()) {
+			String styleClass = matcher.group("KEYWORD") != null ? "keyword" :
+						        matcher.group("SEMICOLON") != null ? "semicolon": 
+						        matcher.group("COMMENT") != null ? "comment" : null;
+			assert styleClass != null;
+			spansBuilder.add(Collections.emptyList(), matcher.start() - lastKwEnd);
+			spansBuilder.add(Collections.singleton(styleClass), matcher.end() - matcher.start());
+			lastKwEnd = matcher.end();
+		}
+		spansBuilder.add(Collections.emptyList(), text.length() - lastKwEnd);
+		return spansBuilder.create();
 	}
 
 	public String getValue() {
