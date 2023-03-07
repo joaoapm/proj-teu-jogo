@@ -2,7 +2,7 @@ package br.com.teujogo.enumeration;
 
 public enum TipoSnippet {
 
-	GRAVIDADE(1, "Gravidade", "G = m * g", "G"), FORCA(2, "Força", "F = m * a", "F");
+	GRAVIDADE(1, "Gravidade", "G = m * g", "G"), FORCA(2, "ForÃ§a", "F = m * a", "F");
 
 	private int valor;
 	private String descricao;
