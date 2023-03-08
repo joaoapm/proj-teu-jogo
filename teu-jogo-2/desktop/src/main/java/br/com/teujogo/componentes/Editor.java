@@ -10,7 +10,10 @@ import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.model.StyleSpans;
 import org.fxmisc.richtext.model.StyleSpansBuilder;
 
+import br.com.teujogo.ed.Elemento;
+import br.com.teujogo.ed.Regra;
 import br.com.teujogo.enumeration.TipoSnippet;
+import br.com.teujogo.testes.Interpretador;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.EventHandler;
@@ -46,9 +49,16 @@ public class Editor extends HBox {
 
 	@FXML
 	private Button btnRemover;
+	
+	private Regra regra;
+	
+	private Elemento elemento;
 
-	public void setRegra(String regra) {
-		// areaTexto.setText(regra);
+	public void setRegra(Regra regra, Elemento elemento) {
+		this.elemento = elemento;
+		this.regra = regra;
+		if (regra.getRegra() != null)
+			areaTexto.replaceText(regra.getRegra());
 	}
 
 	public Editor() {
@@ -138,6 +148,12 @@ public class Editor extends HBox {
 	private void aoFechar(MouseEvent event) {
 		propertyOnFechar.get().handle(event);
 	}
+	
+	@FXML
+	private void aoSalvar(MouseEvent event) {
+		regra.setRegra(areaTexto.getText());
+		Interpretador.interpretarRegra(regra, elemento);
+	}
 
 	public final ObjectProperty<EventHandler<MouseEvent>> onRemoverProperty() {
 		return propertyOnRemover;
@@ -166,5 +182,10 @@ public class Editor extends HBox {
 
 	public final EventHandler<MouseEvent> getOnAlterar() {
 		return propertyOnAlterar.get();
+	}
+
+	public void setRegra(ElementoJogo elemento) {
+		// TODO Auto-generated method stub
+		
 	}
 }

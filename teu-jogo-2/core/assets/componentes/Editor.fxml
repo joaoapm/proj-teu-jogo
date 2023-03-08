@@ -33,6 +33,13 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Button>
+            
+            <Button fx:id="btnSalvar" layoutX="10.0" layoutY="10.0" onMouseReleased="#aoSalvar" mnemonicParsing="false" text="V">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Button>
+            
          </children>
       </VBox>
       

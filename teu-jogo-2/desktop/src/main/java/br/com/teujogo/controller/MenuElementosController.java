@@ -94,6 +94,7 @@ public class MenuElementosController {
 					MenuElementosEdtPersonagemController controller = fxmlLoader
 							.<MenuElementosEdtPersonagemController>getController();
 					pnlElementos.getChildren().add(root);
+					controller.setElement(elemento);
 					controller.atualiza(this.elemento);
 				} else {
 					pnlElementos.getChildren().removeAll(pnlElementos.getChildren());
@@ -130,6 +131,7 @@ public class MenuElementosController {
 			MenuElementosEdtPersonRegraController controller = fxmlLoader
 					.<MenuElementosEdtPersonRegraController>getController();
 			pnlElementos.getChildren().add(root);
+			controller.setElement(elemento);
 			controller.atualiza(r);
 		} catch (IOException e) {
 			e.printStackTrace();

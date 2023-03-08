@@ -2,6 +2,7 @@ package br.com.teujogo.controller;
 
 import br.com.teujogo.componentes.Editor;
 import br.com.teujogo.componentes.ElementoJogo;
+import br.com.teujogo.ed.Regra;
 import br.com.teujogo.util.EdtElemento;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -13,7 +14,7 @@ public class MenuElementosEdtElementoAcaoController extends EdtElemento {
 
 	public void atualiza(ElementoJogo elemento) {
 		setElemento(elemento);
-		editor.setRegra(this.getElemento().getTxtRegra());
+		editor.setRegra(this.getElemento());
 	}
 
 	@FXML

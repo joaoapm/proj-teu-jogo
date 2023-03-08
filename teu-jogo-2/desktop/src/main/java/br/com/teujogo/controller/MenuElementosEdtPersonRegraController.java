@@ -28,7 +28,7 @@ public class MenuElementosEdtPersonRegraController extends EdtElemento {
 
 	public void atualiza(Regra r) {
 		this.setRegra(r);
-		editor.setRegra(r.getRegra());
+		editor.setRegra(r, super.getElement());
 	}
 	
 	public void atualiza(Regra r,Elemento e) {
@@ -37,7 +37,6 @@ public class MenuElementosEdtPersonRegraController extends EdtElemento {
 	}
 	
 	@FXML
-	private void altEditor(MouseEvent e) {
-		this.getRegra().setRegra(editor.getValue());
+	private void altEditor(MouseEvent e) { 
 	}
 }
